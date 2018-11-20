@@ -24,7 +24,7 @@ The Go API  is deployed to my individual project EC2 instance.
 
 It connects to my individual project Mongo NoSQL Database Cluster with Sharding through the Mongo Query Router. 
 
-### How to use the Login API
+#### How to use the Login API
 
 Run following curl command to test the login success case
 
@@ -44,7 +44,7 @@ Change the password from a123 to wrong_password to test the login fail case
 
 ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/GoLogsDuringLogin.jpg.jpg)		
 
-## Journal of setting up the Mongo data collection for Go API.
+#### Journal of setting up the Mongo data collection for Go API.
 
 Go to the Mongo Query Router EC2 instance.
 
@@ -62,7 +62,7 @@ Go to the Mongo Query Router EC2 instance.
 
 ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/CreateDataCollection.jpg)		
 
-## Journal of setting up the Go at EC2 instance for Go API Application
+#### Journal of setting up the Go at EC2 instance for Go API Application
 
 Go to the Mongo Query Router EC2 instance.
 
@@ -81,7 +81,7 @@ Install go:
     go build goapi
     ./goapi      //start Go API service
 
-## Journal of creating the Login API in Go
+#### Journal of creating the Login API in Go
 
     Adding the link to github Login API Go folder. 
     
