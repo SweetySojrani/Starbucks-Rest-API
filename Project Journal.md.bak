@@ -16,4 +16,14 @@ Discuss about the application domain and split microservices to team members.
   - Created the MongoDB data collection "cmpe281"
   - Added some testing login acount into the MongoDB data collection "cmpe281"
   
+### Week 3
+
+Discuss about the application domain and split microservices to team members.
+
+- Yingua
+  - Created test cases for successful login
+  - Created test cases for failed login (wrong password)
+  - Created the Go login API by modifying the Go sample code
+
+  
    
