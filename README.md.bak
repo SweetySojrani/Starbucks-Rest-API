@@ -42,8 +42,6 @@ Change the password from a123 to wrong_password to test the login fail case
 
 ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/TestingCURL.jpg)	
 
-![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/GoLogsDuringLogin.jpg.jpg)		
-
 ## Journal of setting up the Mongo data collection for Go API.
 
 Go to the Mongo Query Router EC2 instance.
@@ -61,6 +59,9 @@ Go to the Mongo Query Router EC2 instance.
     db.cmpe281.insert( { "user_id":1, "name":"oliver1", "password":"a123" })
 
 ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/CreateDataCollection.jpg)		
+
+![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/GoLogsDuringLogin.jpg.jpg)		
+
 
 ## Journal of setting up the Go at EC2 instance for Go API Application
 
