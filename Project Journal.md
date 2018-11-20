@@ -25,5 +25,15 @@ Discuss about the application domain and split microservices to team members.
   - Created test cases for failed login (wrong password)
   - Created the Go login API by modifying the Go sample code
 
+### Week 4  (planning)
+
+Discuss about the application domain and split microservices to team members.
+
+- Yinghua
+  - To create a strategy pattern on the Go API so that I could switch the production mode and Dev mode
+  - For the Dev mode, it will check a fix list of login account without connecting to MongoDB
+  - For the production mode, it will check the MongoDB data. 
+  - The purpose of this stratey pattern is to say some EC2 instance hours. :) 
+
   
    
