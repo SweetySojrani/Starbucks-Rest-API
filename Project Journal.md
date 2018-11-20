@@ -25,6 +25,11 @@ Discuss about the application domain and split microservices to team members.
   - Created test cases for failed login (wrong password)
   - Created the Go login API by modifying the Go sample code
 
+Nodes: 
+      Hey Team, I have the first version Go Login API ready. However, it is connecting to my MongoDB cluster.  To keep all those EC2 instances up and running will cost too much $.  So I plan to refactor the first version to the second version with a "Strategy" pattern.  :slightly_smiling_face:  The "Strategy" pattern will have two strategies: Production and Dev.  For Dev mode, the app would check a list of accounts without connecting to the MongoDB.  For production mode,  it will connect to my MongoDB cluster. 
+
+
+
 ### Week 4  (planning)
 
 Discuss about the application domain and split microservices to team members.
