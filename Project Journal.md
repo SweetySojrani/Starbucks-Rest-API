@@ -50,8 +50,7 @@ Notes:
   - For the production mode, it will check the MongoDB data. 
   - The purpose of this stratey pattern is to say some EC2 instance hours. :)
 
-
-
+- Vera
   - Try to discuss with team on integration and possible Kong gateway routes
   - Research on Kong gateway plugin features and frontend solutions
 
