@@ -14,7 +14,11 @@ Discuss about the application domain and split microservices to team members.
 - Yinghua
   - Created the MongoDB data collection "cmpe281"
   - Added some testing login acount into the MongoDB data collection "cmpe281"
-  
+
+- Vera
+
+  - Looked into the Go sample and design order structure
+  - Configure Mongodb and Rabbitmq for order Go API
 ### Week 3
 
 
@@ -33,7 +37,9 @@ Notes:
       For Dev mode, the app would check a list of accounts without connecting to the MongoDB.  
       For production mode,  it will connect to my MongoDB cluster. 
 
-
+- Vera
+  - Tested order API locally and connected with mongodb and rabbitmq
+  - Research on possible frontend framework and wow factors
 
 ### Week 4  (planning)
 
@@ -42,7 +48,10 @@ Notes:
   - To create a strategy pattern on the Go API so that I could switch the production mode and Dev mode
   - For the Dev mode, it will check a fix list of login account without connecting to MongoDB
   - For the production mode, it will check the MongoDB data. 
-  - The purpose of this stratey pattern is to say some EC2 instance hours. :) 
+  - The purpose of this stratey pattern is to say some EC2 instance hours. :)
 
-  
-   
+
+
+  - Try to discuss with team on integration and possible Kong gateway routes
+  - Research on Kong gateway plugin features and frontend solutions
+
