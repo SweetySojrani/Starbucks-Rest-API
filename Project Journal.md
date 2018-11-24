@@ -53,4 +53,7 @@ Notes:
 - Vera
   - Try to discuss with team on integration and possible Kong gateway routes
   - Research on Kong gateway plugin features and frontend solutions
-
+- Lakshmi
+  - NoSQL Data Modeling:
+    Try to model mongodb database schema to work with the project
+    Create product catalog and integrate with the database schema
