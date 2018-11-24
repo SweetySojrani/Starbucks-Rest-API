@@ -13,8 +13,8 @@
 - Catalog - Lakshmi
 - Payment - Sweety
 - Login/Signup - Yinghua
-- Create order - Vera
-- Process Order - Kody
+- Create/Process order - Vera
+- Kong Gateway - Kody
 - Frontend: All Members
 
 
@@ -52,7 +52,7 @@ Go to the Mongo Query Router EC2 instance.
     mongo
     use cmpe281
     db.createCollection("cmpe281")
-
+    
     db.cmpe281.insert( { "user_id":1, "name":"oliver", "password":"123" })
     db.cmpe281.insert( { "user_id":2, "name":"harry", "password":"456" })
     db.cmpe281.insert( { "user_id":3, "name":"emma", "password":"789" })
@@ -75,7 +75,7 @@ Install go:
     vi ~/.profile
     	export GOPATH=$HOME//goapi
     	export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-
+    
     source ~/.profile
     cd ~/goapi
     go build goapi
@@ -84,6 +84,7 @@ Install go:
 #### Journal of creating the Login API in Go
 
     Adding the link to github Login API Go folder. 
-    
-	
+
+
+​	
 

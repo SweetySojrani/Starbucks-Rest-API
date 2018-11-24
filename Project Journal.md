@@ -52,7 +52,8 @@ Notes:
 
 - Vera
   - Try to discuss with team on integration and possible Kong gateway routes
-  - Research on Kong gateway plugin features and frontend solutions
+  - Tested creating and processing order part and deployed to AWS
+  - Decided to use NodeJS as frontend framework
 - Lakshmi
   - NoSQL Data Modeling:
     Try to model mongodb database schema to work with the project
