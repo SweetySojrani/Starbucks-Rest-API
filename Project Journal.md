@@ -56,5 +56,5 @@ Notes:
   - Decided to use NodeJS as frontend framework
 - Lakshmi
   - NoSQL Data Modeling:
-    Try to model mongodb database schema to work with the project
-    Create product catalog and integrate with the database schema
+    Created product catalog and integrate with the database schema
+    
