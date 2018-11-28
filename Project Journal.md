@@ -54,7 +54,7 @@ Notes:
   - Try to discuss with team on integration and possible Kong gateway routes
   - Tested creating and processing order part and deployed to AWS
   - Decided to use NodeJS as frontend framework
+  
 - Lakshmi
-  - NoSQL Data Modeling:
-    Created product catalog and integrate with the database schema
+   - Create product catalog and integrate with the database schema
     
