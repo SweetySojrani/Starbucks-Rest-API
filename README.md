@@ -96,7 +96,7 @@ Install go:
 1. SSH into mongo shell of EC2 Instance
 2. Create database cmpe281
    <pre>
-        use cmpe281;
+            use cmpe281;
    </pre>
 3. Create collection 'products' and insert documents into it
    <pre>
