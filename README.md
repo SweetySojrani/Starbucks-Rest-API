@@ -92,7 +92,7 @@ Install go:
 
 ## Create Product Catalog 
 
-** Steps to create Product Catalog **
+# Steps to create Product Catalog 
 1. SSH into mongo shell of EC2 Instance
 2. Create database cmpe281
    <pre>
