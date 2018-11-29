@@ -1,0 +1,144 @@
+<!-- Routing -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Latest compiled and minified CSS -->
+<!-- Latest compiled and minified CSS -->
+	<!-- Fun Css Font -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Balthazar|Capriola|Hammersmith+One|Istok+Web|Merriweather+Sans|Reem+Kufi|Ruda|Signika" rel="stylesheet">
+<style type="text/css">
+	.jumbotron{
+		background-color:blue !important;
+		height:"300px";
+	}
+	#title {
+  font: 400 130px/0.8 'Cookie', Helvetica, sans-serif;
+	text-align:center;
+  color: #fff;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1);
+	}
+	.center-text{
+		text-align:center;
+	}
+	.content {
+		background-color:#F08080;
+		/* font-family: 'Open Sans', sans-serif; */
+		font-family: 'Istok Web', sans-serif;
+	}
+/* .rainbow {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+} */
+/* .rainbow {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+} */
+</style>
+<!-- Fancy CSS Font -->
+<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+<title>Starbucks | eCommerce site</title>
+</head>
+<body>
+  <br/>
+	<div class="row text-center">
+		<img src="starbucks.png" class="img-circle" alt="Cinque Terre" width="400" height="400">
+	</div>
+  <br/><br/>
+	<div class="container-fluid">
+		<div class="row text-center">
+			{{!-- <nav class="navbar navbar-nav navbar-collapse navbar-expand-lg navbar-light bg-light" id="nav-content">
+        <br/> --}}
+		  {{!-- <a class="navbar-brand" href="index.php">About</a>
+			<a class="navbar-brand" href="products.php">Products</a> --}}
+			<button type="button" class="btn btn-success btn-lg btn-center" data-toggle="modal" data-target="#loginModal" data-whatever="@mdo"><b>Login</b></button>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue"> New User?</span> <button type="button" class="btn btn-success btn-lg btn-center" data-toggle="modal" data-target="#registerModal" data-whatever="@mdo"><b>Sign Up</b></button>
+		 {{!-- </nav> --}}
+   </div>
+
+	 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Enter your credentials</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form action="password1.php" method="post">
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label">Email</label>
+								<input type="text" name="email" class="form-control" id="recipient-name" placeholder="Enter username here">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Password</label>
+								<input type="password" name="PASSWORD" class="form-control" id="message-text">
+							</div>
+							<div class="modal-footer">
+                <div class="row">
+                  <span style="color:blue"> Do not have an account yet? </span><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" data-whatever="@mdo"><b><u><span style="color:blue;font-size: 16px !important;">Sign Up</span></u></b></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  								<input type="submit" value="Login" class="btn btn-lg btn-primary">
+                </div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+    <br>
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ 			<div class="modal-dialog" role="document">
+ 				<div class="modal-content">
+ 					<div class="modal-header">
+ 						<h5 class="modal-title" id="exampleModalLabel">Enter your details</h5>
+ 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+ 							<span aria-hidden="true">&times;</span>
+ 						</button>
+ 					</div>
+ 					<div class="modal-body">
+ 						<form action="register.php" method="post">
+ 							<div class="form-group">
+ 								<label for="recipient-name" class="col-form-label">Name</label>
+ 								<input type="text" name="firstName" class="form-control" id="recipient-name" placeholder="Type your name here" required>
+ 							</div>
+              <div class="form-group">
+ 								<label for="message-text" class="col-form-label">Email</label>
+ 								<input type="email" name="email" class="form-control" id="message-text" placeholder="Type your email" required>
+ 							</div>
+              <div class="form-group">
+ 								<label for="message-text" class="col-form-label">Password</label>
+ 								<input type="password" name="password" class="form-control" id="message-text" placeholder="Type your password" required>
+ 							</div>
+ 							<div class="modal-footer">
+                <span style="color:blue"> Existing User? </span><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal" data-whatever="@mdo"><b><u><span style="color:blue;font-size: 16px !important;">Login</span></u></b></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+ 								<input type="submit" value="Sign Up" class="btn btn-lg btn-primary">
+ 							</div>
+ 						</form>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+	</div>
+	</div>
+</body>
+</html>
