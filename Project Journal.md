@@ -57,4 +57,7 @@ Notes:
   
 - Lakshmi
    - Create product catalog and integrate with the database schema
-    
+   - Added Nodejs API routes for Users and Products
+   - Next steps:
+      - add remaining API routes
+      - Integrate with GO API
