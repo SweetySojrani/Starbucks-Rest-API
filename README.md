@@ -180,4 +180,11 @@ Install go:
            ]);
 
    </pre>
+   
+   ## Steps to run Nodejs api
+   
+   1. cd into the node_js_api directory 
+   2. Run <pre>npm install</pre>
+   3. Run <pre>npm start</pre> or <pre>node app.js</pre>
+   
 
