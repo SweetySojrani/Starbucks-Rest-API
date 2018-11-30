@@ -6,10 +6,6 @@
 
 # Front End UI Pages
 
-# UI Mockup
-
-
-
 #### Home Page
 
 ![1543559881953](../README.assets/1543559881953.png)
