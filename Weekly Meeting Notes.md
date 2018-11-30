@@ -5,8 +5,13 @@ Discuss about the application domain and split microservices to team members.
 - Vera
   - Research on Order feature and decide on which NoSQL database to use
   - Research on popular frontend framework
+  
 - Yinghua
   - Looked into the Go sample code from professor
+  
+- Sweety
+  - Analyzed the Golabs code to understand the design of GO API microservices.
+  - Explored the Payment feature of the application and designed the MongoDB database.
 
 ### Week 2
 
@@ -19,6 +24,10 @@ Discuss about the application domain and split microservices to team members.
 
   - Looked into the Go sample and design order structure
   - Configure Mongodb and Rabbitmq for order Go API
+  
+- Sweety
+  - Created test cases for payment and started creating the Go API.
+  
 ### Week 3
 
 
@@ -40,6 +49,9 @@ Notes:
 - Vera
   - Tested order API locally and connected with mongodb and rabbitmq
   - Research on possible frontend framework and wow factors
+  
+- Sweety
+  - Tested the GO API created for payment of the application locally.
 
 ### Week 4  
 
