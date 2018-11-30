@@ -103,7 +103,7 @@ Install go:
                   "count": 3
                 }
             ]);
-          
+   
           db.products.insert([
             {
               "name": "Cinnamon Dolce Latte",
@@ -167,3 +167,56 @@ Install go:
    2. Run <pre>npm install</pre>
    3. Run <pre>npm start</pre> or <pre>node app.js</pre>
    
+
+## Order API
+
+1. Start Mongo cluster and create orders collection
+2.  Use Kubernetes to start server
+3. Tested with Postman
+
+```
+Create order API
+curl -X POST \
+  http://localhost:3000/order \
+  -H 'Content-Type: application/json' \
+  -d '{"UserId": "vera",
+ "Items": [{
+ 	"Name": "Soy Latte",
+ 	"Price": "$3.5",
+ 	"Quantity": 1
+ },
+ {
+ 	"Name": "Cappucino",
+ 	"Price": "$4.0",
+ 	"Quantity": 1
+ },
+ {
+ 	"Name": "Macchiato",
+ 	"Price": "$3.0",
+ 	"Quantity": 1
+ }]
+}'
+
+Get Order Status
+
+curl -X GET \
+  http://localhost:3000/order/1fe8d86b-298f-46d9-998a-d80d7713e554 \
+  -H 'Content-Type: application/json' \
+  -d '{"UserId": "vera"}'
+
+Complete Order
+
+curl -X POST \
+  http://localhost:3000/order/1fe8d86b-298f-46d9-998a-d80d7713e554 \
+  -H 'Content-Type: application/json' \
+  -d '{"UserId": "vera"}'
+
+Get orders history
+
+curl -X GET \
+  http://localhost:3000/orders \
+  -H 'Content-Type: application/json' \
+  -d '{"UserId": "vera"}'
+
+
+```

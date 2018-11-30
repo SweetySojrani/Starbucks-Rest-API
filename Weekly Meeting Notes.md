@@ -41,7 +41,7 @@ Notes:
   - Tested order API locally and connected with mongodb and rabbitmq
   - Research on possible frontend framework and wow factors
 
-### Week 4  (planning)
+### Week 4  
 
 
 - Yinghua
@@ -49,24 +49,30 @@ Notes:
   - For the Dev mode, it will check a fix list of login account without connecting to MongoDB
   - For the production mode, it will check the MongoDB data. 
   - The purpose of this stratey pattern is to say some EC2 instance hours. :)
-
 - Vera
   - Try to discuss with team on integration and possible Kong gateway routes
   - Tested creating and processing order part and deployed to AWS
   - Decided to use NodeJS as frontend framework
-  
 - Lakshmi
    - Create product catalog and integrate with the database schema
    - Added Nodejs API routes for Users and Products
    - Next steps:
       - add remaining API routes
       - Integrate with GO API
-      
   - Sweety
    - The payment Go API will check the credit card info from the front end and validate it.
    - The front end will route the order details from order API to make the payment in the payment API
    - The APIs will be deployed as docker containers and will be managed by kubernetes as part of the WOW factor.
-   
    - Next steps:
     - Explore different features of Kubernetes and decide how it can be well utilized for the deployment.
     - Test the integration of the APIs with Node js.
+
+## Week 5 (planning)
+
+- Vera
+  - Enable sharding on orders collection
+  - Run server with Kubernetes and deploy to AWS
+  - Start integration with frontend
+
+
+
