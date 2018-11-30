@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{{siteTitle}}</title>
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/amelia-bootstrap.min.css">
+  <link href="/css/site.css" media="all" rel="stylesheet" />
+</head>
+
+<body lang="en">
+<div id="page">
+	<header class="container">
+	      <div id="menu" class="navbar navbar-default navbar-fixed-top">
+	        <div class="navbar-header">
+	          <button class="btn btn-success navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="glyphicon glyphicon-chevron-down"></span>
+	          </button>
+	          <div id="logo">
+	            <a href='.'>
+	              <img style="height:100px" src="/images/logo.png" class="img-thumbnail" />
+	            </a>
+	          </div>
+	        </div>
+	        <div class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav navbar-right">
+	            <li class="nav"><a href="/">Home</a> </li>
+	            <li class="nav"><a href="/products">Coffee</a> </li>
+	            <li class="nav"><a href=".">Tea</a> </li>
+	            <li class="nav"><a href=".">Menu</a> </li>
+	            <li class="nav"><a href=".">About</a> </li>
+	            <li class="nav"><a href=".">Contact</a> </li>
+	          </ul>
+	        </div>
+	      </div>
+	</header>
+	
+	<section id="body" class="container">
+	
+	      <div class="page-header">
+	        
+	        <p class="text-warning">{{pageDescr}}</p>
+	      </div>
+	  <section id="main" class="col-md-12 col-sm-12">
+	        {{{body}}}
+	  </section>
+	  
+
+	<footer class="container footer navbar-fixed-bottom">
+	  <p>Another wonderful cmpe281 team project</a>.</p>
+	  <div  class="row" style="background:black">
+		<div  class="col-md-2">
+		</div>
+		<div  class="col-md-3">
+		<br/><br/>
+			<img src="/images/rewards.png" width="50%" height="10%" align="right"/>
+		</div>
+
+		<div  class="col-md-5">
+			 <font color="white"><h4 style="padding: .25em;">Make every sip more rewarding</h4>
+
+			 <h6>Join Starbucks Rewards™ to earn Gold level benefits like free drinks and food, <br/>get free refills, pay and order with your phone, and more.</h6>
+			 <br/>
+			 </font>
+
+			 <button type="button" style="background-color: #D4AF37; text-align: center; text-color:black;border-color: #D4AF37;">&nbsp;&nbsp;&nbsp;Join Now &nbsp;&nbsp;</button>
+			 &nbsp;&nbsp;
+			 <font color="white">
+			 <button type="button" style="background-color: #D4AF37; text-align: center;" onclick="location.href='/login';">
+				 &nbsp;&nbsp;&nbsp;Sign In  &nbsp;&nbsp;</button>
+			 </font>
+			 <br/>
+			 <br/>
+		</div>
+	</div>	  
+	</footer>
+</div>    
+</body>
+
+<script src="/js/ios-orientationchange-fix.js"></script>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+
+</html>
