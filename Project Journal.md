@@ -1,53 +1,18 @@
-## Part 1 - Go API for Login (Yinghua)
+# Project Journal
 
-The Go API  is deployed to my individual project EC2 instance.
+## Week #1 
 
-It connects to my individual project Mongo NoSQL Database Cluster with Sharding through the Mongo Query Router. 
+### Part 1 - Go API for Login (Yinghua)
 
-#### How to use the Login API
+- #### What I have done this week
 
-Run following curl command to test the login success case
+  - Setting up the Go at EC2 instance for Go API Application
 
-    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://13.56.125.192:3000/login \
-       -d "name=oliver1" \
-       -d "password=a123"
-    
-    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:3000/login \
-    -d "name=oliver&password=a123"
+  - Go to the Mongo Query Router EC2 instance.
 
-Change the password from a123 to wrong_password to test the login fail case
+    Install go:
 
-    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:3000/login \
-    -d "name=oliver&password=wrong_password"
-
-![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/TestingCURL.jpg)	
-
-![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/GoLogsDuringLogin.jpg.jpg)		
-
-#### Journal of setting up the Mongo data collection for Go API.
-
-Go to the Mongo Query Router EC2 instance.
-
-    sudo systemctl restart mongodb
-    mongo
-    use cmpe281
-    db.createCollection("cmpe281")
-    
-    db.cmpe281.insert( { "user_id":1, "name":"oliver", "password":"123" })
-    db.cmpe281.insert( { "user_id":2, "name":"harry", "password":"456" })
-    db.cmpe281.insert( { "user_id":3, "name":"emma", "password":"789" })
-    db.cmpe281.insert( { "user_id":4, "name":"sophia", "password":"124" })
-    db.cmpe281.insert( { "user_id":5, "name":"jack", "password":"125" })
-    db.cmpe281.insert( { "user_id":1, "name":"oliver1", "password":"a123" })
-
-![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/CreateDataCollection.jpg)		
-
-#### Journal of setting up the Go at EC2 instance for Go API Application
-
-Go to the Mongo Query Router EC2 instance.
-
-Install go:
-
+    ```
     wget https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz 
     tar -C /usr/local -xzf go1.11.1.linux-amd64.tar.gz
     export PATH=$PATH:/usr/local/go/bin
@@ -60,14 +25,111 @@ Install go:
     cd ~/goapi
     go build goapi
     ./goapi      //start Go API service
-
-#### Journal of creating the Login API in Go
-
-    Adding the link to github Login API Go folder. 
+    ```
 
 
+## Week #2
+
+### Part 1 - Go API for Login (Yinghua)
+
+- #### What I have done this week
+  - Adding data collection steps 
+
+  - Document the setting of data collection
+
+    ###### Journal of setting up the Mongo data collection for Go API.
+
+    Go to the Mongo Query Router EC2 instance.
+
+        sudo systemctl restart mongodb
+        mongo
+        use cmpe281
+        db.createCollection("cmpe281")
+        
+        db.cmpe281.insert( { "user_id":1, "name":"oliver", "password":"123" })
+        db.cmpe281.insert( { "user_id":2, "name":"harry", "password":"456" })
+        db.cmpe281.insert( { "user_id":3, "name":"emma", "password":"789" })
+        db.cmpe281.insert( { "user_id":4, "name":"sophia", "password":"124" })
+        db.cmpe281.insert( { "user_id":5, "name":"jack", "password":"125" })
+        db.cmpe281.insert( { "user_id":1, "name":"oliver1", "password":"a123" })
+
+    ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/CreateDataCollection.jpg)		
 
 
+
+## Week #3
+
+### Part 1 - Go API for Login (Yinghua)
+
+- #### What I have done this week
+
+  - Implemented and deployed the Go API  is deployed to my individual project EC2 instance.
+
+  - It connects to my individual project Mongo NoSQL Database Cluster with Sharding through the Mongo Query Router. 
+
+  - Document how to use the login API
+
+    ###### How to use the Login API
+
+    Run following curl command to test the login success case
+
+    ```
+    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://13.56.125.192:3000/login \
+       -d "name=oliver1" \
+       -d "password=a123"
+    
+    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:3000/login \
+    -d "name=oliver&password=a123"
+    ```
+
+    Change the password from a123 to wrong_password to test the login fail case
+
+    ```
+    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:3000/login \
+    -d "name=oliver&password=wrong_password"
+    ```
+
+    ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/TestingCURL.jpg)	
+
+    ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/GoLogsDuringLogin.jpg.jpg)		
+
+
+
+## Week #4
+
+### Part 1 - Go API for Login (Yinghua)
+
+- #### What I have done this week
+
+  Implemented the front end UI framework
+
+  Home Page
+
+  ![1543559881953](./README.assets/1543559881953.png)
+
+  Login
+
+  ![1543559908292](./README.assets/1543559908292.png)
+
+  Login Success - Show My Card Balance
+
+  ![1543559950618](./README.assets/1543559950618.png)
+
+  Add Card
+
+  ![1543559651475](./README.assets/1543559651475.png)
+
+  Product List
+
+  ![1543559693654](./README.assets/1543559693654.png)
+
+  One Product - click "Pay Now" to pay
+
+  ![1543559744261](./README.assets/1543559744261.png)
+
+  Paid
+
+  ![1543559794105](./README.assets/1543559794105.png)
 
 
 ## Create Product Catalog 
