@@ -10,13 +10,11 @@
 
 Instruction: 
 
-Download the node modules
+download the node modules
 
-      npm install
+run 
 
-Run the application
-
-      node server.js
+node server.js
 
 
 
