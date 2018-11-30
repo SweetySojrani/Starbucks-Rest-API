@@ -1,20 +1,49 @@
 
 
-# ${projectname}
+# Project Name: Starbucks Online Orders
 
 
 
-## Usage
+# Front End UI Pages
+
+#### Home Page
+
+![1543559881953](C:/Yinghua/SJSU/2018Fall/CMPE281/fa18-281-sky/README.assets/1543559881953.png)
 
 
 
-## Developing
+#### Login
+
+![1543559908292](C:/Yinghua/SJSU/2018Fall/CMPE281/fa18-281-sky/README.assets/1543559908292.png)
 
 
 
-### Tools
+#### Login Success - Show My Card Balance
 
-Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
- ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
+![1543559950618](C:/Yinghua/SJSU/2018Fall/CMPE281/fa18-281-sky/README.assets/1543559950618.png)
 
-Nodeclipse is free open-source project that grows with your contributions.
+
+
+#### Add Card
+
+![1543559651475](C:/Yinghua/SJSU/2018Fall/CMPE281/fa18-281-sky/README.assets/1543559651475.png)
+
+
+
+#### Product List
+
+![1543559693654](C:/Yinghua/SJSU/2018Fall/CMPE281/fa18-281-sky/README.assets/1543559693654.png)
+
+
+
+#### One Product - click "Pay Now" to pay
+
+![1543559744261](C:/Yinghua/SJSU/2018Fall/CMPE281/fa18-281-sky/README.assets/1543559744261.png)
+
+
+
+#### Paid
+
+![1543559794105](C:/Yinghua/SJSU/2018Fall/CMPE281/fa18-281-sky/README.assets/1543559794105.png)
+
+## 
