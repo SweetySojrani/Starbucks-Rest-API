@@ -21,5 +21,6 @@ router.models       = require('./models');
 // Module's Routes. Please note this is actually under /hello, because module is attached under /hello
 
 router.get('/', router.callbacks.addcard);
+router.post('/', router.callbacks.addcardPost);
 
 
