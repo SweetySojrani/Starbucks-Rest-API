@@ -59,7 +59,7 @@ Notes:
    - Next steps:
       - add remaining API routes
       - Integrate with GO API
-  - Sweety
+- Sweety
    - The payment Go API will check the credit card info from the front end and validate it.
    - The front end will route the order details from order API to make the payment in the payment API
    - The APIs will be deployed as docker containers and will be managed by kubernetes as part of the WOW factor.
