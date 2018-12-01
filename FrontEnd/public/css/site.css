@@ -1,0 +1,54 @@
+﻿body {
+  margin-top: 70px;
+}
+
+.table-responsive > .table
+{
+  background-color: transparent;
+}
+
+
+/*@import url(http://fonts.googleapis.com/css?family=Vollkorn:700italic);
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  background: #ddd;
+}
+
+#page {
+  border: 1px solid #666;
+  border-radius: 5px;
+  background: #fff;
+  margin: 0 auto;
+  padding: 12px;
+  width: 989px;
+}
+
+#menu {
+  float: right;
+}
+
+  #menu ul {
+    list-style: none;
+  }
+
+    #menu ul li {
+      display: inline;
+      margin: 0 4px;
+    }
+
+form > * {
+  display: block;
+}
+
+#logo a {
+  font-size: 60px;
+  font-family: 'Vollkorn', serif;
+  text-decoration: none;
+  color: #c14d00;
+  font-style: italic;
+}
+*/

@@ -1,0 +1,59 @@
+{
+  "name": "nodebootstrap-based-app",
+  "private": true,
+  "description": "",
+  "author": "",
+  "license": "UNLICENSE",
+  "main": "./server.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=6.2"
+  },
+  "dependencies": {
+    "app-module-path": "^2.1.0",
+    "body-parser": "^1.14.1",
+    "config": "*",
+    "consolidate": "^0.14.0",
+    "express": "^4.11.0",
+    "glob": "^7.0.0",
+    "hbs": "^4.0",
+    "lodash": "^4.3.0",
+    "metalogger": "*",
+    "nodebootstrap-htmlapp": "*",
+    "nodebootstrap-server": "*",
+    "yaml": "*"
+  },
+  "devDependencies": {
+    "after": "^0.8.1",
+    "istanbul": "^0.4.2",
+    "mocha": "^4.0.1",
+    "chai": "^4.1.2",
+    "should": "^13.1.2",
+    "jshint": "^2.5.x",
+    "nock": "^9.0.2",
+    "sinon": "^4.0.2",
+    "supertest": "^3.0.0"
+  },
+  "scripts": {
+    "start": "./bin/start.sh",
+    "dev": "./bin/dev_start.sh",
+    "docker-start": "docker-compose up -d",
+    "docker-build": "docker-compose build --force-rm --no-cache --pull",
+    "docker-dev": "docker-compose -f docker-compose.dev.yml up -d",
+    "docker-clean-up": "npm run docker-stop && npm run docker-build && npm run docker-up",
+    "docker-stop": "docker-compose down && docker-compose rm -f",
+    "docker-restart": "docker-compose restart",
+    "docker-install-package": "docker-compose run app npm install --save",
+    "docker-test": "docker-compose run app npm test",
+    "docker-test-cov": "docker-compose run app npm run test-cov",
+    "logs": "docker-compose logs",
+    "logs-tail": "docker-compose logs -f",
+    "test": "mocha --bail test/ test/acceptance/",
+    "pretest": "jshint lib test",
+    "test-cov": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- --reporter dot test/ test/acceptance/",
+    "test-travis": "istanbul cover _mocha --report lcovonly -- test/ test/acceptance/"
+  }
+}

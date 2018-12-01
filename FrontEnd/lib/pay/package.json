@@ -1,0 +1,3 @@
+{ "name" : "pay module"
+, "main" : "pay.js"
+}
