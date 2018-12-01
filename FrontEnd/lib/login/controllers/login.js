@@ -6,13 +6,15 @@ var greeter   = require('../models/greeter');
 exports.loginForm = function(req, res) {
 
   var name = req.query.name || "";
-
+  var error=req.query.error;
+  
   var context = {
     siteTitle: "Login Form"
   , welcomeMessage: greeter.welcomeMessage(name)
   ,pageDescr: "Let's login to go further"
+  ,error: error
   };
-
+ 
   var template = __dirname + '/../views/loginForm';
   res.render(template, context);
 
@@ -25,19 +27,30 @@ exports.loginSubmit = function(req, res) {
 	const http = require('http');
 	const querystring = require('querystring'); 
 	
-	var name = req.query.name || "";
-
+	//var name = req.query.username || "";
+	 
+	
+	
 	  var context = {
 	    siteTitle: "Home"
 	  , welcomeMessage: greeter.welcomeMessage(name)
 	  ,pageDescr: "Welcome to our Starbucks Club"
 	  };
 	  
-	  
 
+
+	  
+	  
+	  
+	 
+	  
+	  var name=req.body.username;
+	  var password=req.body.password; 
+	  
+	  
 	  var postData = querystring.stringify({
-	      'name' : 'oliver',
-	      'password' : '123'
+	      'name' : name,
+	      'password' : password
 	  });
 
 	  var options = {
@@ -50,76 +63,60 @@ exports.loginSubmit = function(req, res) {
 	         'Content-Length': postData.length
 	       }
 	  };
-
-	  var req = http.request(options, (res) => {
-	    console.log('statusCode:', res.statusCode);
-	    console.log('headers:', res.headers);
-	    let data = '';
+	  
+ 
+	  
+	  var data='';
+	  var req2 = http.request(options, (res2) => {
+	    console.log('statusCode:', res2.statusCode);
+	    console.log('headers:', res2.headers);
+	    //let data = '';
 		  // A chunk of data has been recieved.
-		  res.on('data', (chunk) => {
+		  res2.on('data', (chunk) => {
 		    data += chunk;
 		  });
 		  // The whole response has been received. Print out the result.
-		  res.on('end', () => {
-		    console.log(data);
+		  res2.on('end', () => {
+			  console.log(data);
+		    console.log(data.length);
+		    //console.log(name);
+		   //console.log(password);
+		    
+			  if (data.length>3) {
+				  
+				  res.redirect('/mycards')
+			  } else {
+				  
+				  res.redirect('/login?error=Invalid User Name and Password');
+			  }
+		    
 		  });
 
+//		  process.on('uncaughtException', function (err) {
+//			    console.log(err);
+//			});
+		  
 //	    res.on('data', (d) => {
 //	      process.stdout.write(d);
 //	    });
 	  });
 
-	  req.on('error', (e) => {
+	  req2.on('error', (e) => {
 	    console.error(e);
 	  }); 
 	  
-	  req.write(postData);
-	  req.end();	  
+	  req2.write(postData);
+	  //req2.end();	  
 	  
-	  
+
 
 	  //var template = __dirname + '/../views/login';
 	  //res.render(template, context);
-	  res.redirect('/mycards');
+	  
 	  
 	  // Just responding with a string, without any template:
 	  // res.status(200).send('Hello World');
 	};
 
-	exports.loginSubmit1 = function(req, res) {
 
-		const http = require('http');
-	 
-		var name = req.query.name || "";
-
-		  var context = {
-		    siteTitle: "Home"
-		  , welcomeMessage: greeter.welcomeMessage(name)
-		  ,pageDescr: "Welcome to our Starbucks Club"
-		  };
-		  
-		  
-			http.get('http://localhost:3001/ping', (resp) => {
-				  let data = '';
-
-				  // A chunk of data has been recieved.
-				  resp.on('data', (chunk) => {
-				    data += chunk;
-				  });
-				  // The whole response has been received. Print out the result.
-				  resp.on('end', () => {
-				    console.log(data);
-				  });
-
-				}).on("error", (err) => {
-				  console.log("Error: " + err.message);
-				});
-
-		  //var template = __dirname + '/../views/login';
-		  //res.render(template, context);
-		  res.redirect('/mycards');
-		  
-		  // Just responding with a string, without any template:
-		  // res.status(200).send('Hello World');
-		};
 
