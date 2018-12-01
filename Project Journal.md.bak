@@ -53,7 +53,7 @@
         db.cmpe281.insert( { "user_id":5, "name":"jack", "password":"125" })
         db.cmpe281.insert( { "user_id":1, "name":"oliver1", "password":"a123" })
 
-    ![](./README.assets/CreateDataCollection.jpg)		
+    ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/CreateDataCollection.jpg)		
 
 
 
@@ -89,9 +89,9 @@
     -d "name=oliver&password=wrong_password"
     ```
 
-    ![](./README.assets/TestingCURL.jpg)	
+    ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/TestingCURL.jpg)	
 
-    ![](./README.assets/GoLogsDuringLogin.jpg.jpg)		
+    ![](https://github.com/nguyensjsu/fa18-281-sky/blob/master/GoLoginAPI/GoLogsDuringLogin.jpg.jpg)		
 
 
 
