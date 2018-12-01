@@ -282,3 +282,29 @@ curl -X GET \
 
 
 ```
+
+## Deploy Kong on Google Cloud Platform Marketplace
+
+1. Login to Google Cloud Platform
+```
+https://console.cloud.google.com
+```
+2. Create new project
+3. Go to project 
+
+![GoogleCloudSelectProject](./README.assets/GoogleCloudSelectProj.PNG)   
+4. Go to Project Settings
+5. Select IAM on left sidebar
+6. Edit permissions of your member ID and give role "Kubernetes Engine Admin"
+
+![GoogleCloudKubeneteAdmin](./README.assets/GoogleCloudKuberneteAdmin.PNG)  
+7. Search the Marketplace for Kong or visit
+```
+https://console.cloud.google.com/marketplace/details/kong/kong
+```
+8. Press Configure
+
+![GoogleCloudKongPage](./README.assets/GoogleCloudKongPage.PNG) 
+9. Deploy in default namespace
+
+![GoogleCloudKongDeploy](./README.assets/GoogleCloudKongDeploy.PNG) 
