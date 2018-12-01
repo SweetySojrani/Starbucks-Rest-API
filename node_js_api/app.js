@@ -22,14 +22,18 @@ app.get("/", (req, res) => {
 app.get("/products", (req, res) => {
   var result = new Object();
   var client = new Client();
-  var productsData = "";
+  var productsData = [
+    { name: "Coffee", count: 10 },
+    { name: "Tea", count: 900 }
+  ];
   client.get("http://localhost:3000/products", (data, response_raw) => {
-    productsData = data;
-    for (var key in data) {
-      console.log("key: ", key, " val: ", data[key]);
-    }
+    productsData = data[0];
+    console.log(productsData.name);
+    // for (var key in data) {
+    //   console.log("key: ", key, " val: ", data[key]);
+    // }
   });
-  res.render("products", { productsData: productsData });
+  res.render("product", { productsData: productsData });
 });
 
 app.listen(port, () => {

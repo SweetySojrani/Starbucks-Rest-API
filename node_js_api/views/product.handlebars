@@ -1,0 +1,175 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Latest compiled and minified CSS -->
+<!-- Latest compiled and minified CSS -->
+<style type="text/css">
+	.jumbotron{
+		background-color:blue !important;
+		height:"300px";
+	}
+	#title {
+  font: 400 130px/0.8 'Cookie', Helvetica, sans-serif;
+	text-align:center;
+  color: #fff;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1);
+	}
+	.center-text{
+		text-align:center;
+	}
+</style>
+<!-- Fancy CSS Font -->
+<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+<title>Starbucks | eCommerce site</title>
+</head>
+<body>
+	<!-- <p> <?php  print_r($_COOKIE["visitCount"][0]) ?> hhshah</p> -->
+  <br/>
+  <div class="row text-center">
+    <img src="starbucks.png" class="img-circle" alt="Cinque Terre" width="200" height="200">
+  </div>
+  <br/>
+	<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 col-md-offset-3"></div>
+  		  <a class="navbar-brand" href="/"><h4>Home</h4></a>
+  		  <a class="navbar-brand" href="#"><h4>Products</h4></a>
+      </div>
+    </div>
+    </div>
+      <div class="row">
+      </div>
+        <!-- <div class="col-md-8">
+          <h2 style="color:green;margin-left:2px">Click on a product to vist its page</h2><br> -->
+          <!-- <script type="text/javascript" >
+            function linkClick(event)
+            {
+              //if cookie exists
+            if(document.cookie.indexOf("mostVisited=") >= 0){
+              document.cookie = "mostVisited[visitCount%5]=event.target.href; expires=Thu, 18 Dec 2018 12:00:00 UTC";
+              visitCount++;
+              //location = 'http://localhost/nproject/index.php?c=files&a=index&active_project=2&1369320566';
+              //var video = document.getElementById("mylink").value;
+              console.log(event.target.href);
+            }
+          };
+</script> -->
+          <form action="" method="post">
+          <!-- <a href="products/refrigerator.php" onclick=linkClick(e)><strong><h4>Refrigerator</h4></strong></a><br>
+          <a href="products/dish-washer.php" onclick=linkClick(e)><strong><h4>Dish-washer</h4></strong></a><br>
+          <a href="products/TV.php" onclick="linkClick(event)" id="tv"><strong><h4>Television</h4></strong></a><br>
+          <a href="products/laptop.php" onclick=linkClick(e)><strong><h4>Laptop</h4></strong></a><br>
+          <a href="products/sofa.php" onclick=linkClick(e)><strong><h4>Sofa</h4></strong></a><br>
+          <a href="products/video-game.php"><strong><h4>Video Game</h4></strong></a><br>
+          <a href="products/chair.php" onclick=linkClick(e)><strong><h4>Chair</h4></strong></a><br>
+          <a href="products/dresses-women.php" onclick=linkClick(e)><strong><h4>Dresses for women</h4></strong></a><br>
+          <a href="products/clothing-men.php" onclick=linkClick(e)><strong><h4>Men's wear</h4></strong></a><br>
+          <a href="products/lights.php" onclick=linkClick(e)><strong><h4>Lights</h4></strong></a> -->
+        	<div class="row">
+						//Testing
+						{{!-- <h1>{{productsData.HELLO}}</h1> --}}
+						{{#each productsData as |product| }}
+							<div class="col-md-4">
+	        			<div class="center-text">
+	        				<a class="product" name="Chair" href=""><img src="" width="300" height="300"></a>
+	        				<h3>{{ product.name }}</h3>
+	        			</div>
+	        		</div>
+						{{/each}}
+					</div>
+						{{!-- <div class="col-md-4">
+        			<div class="center-text">
+        				<a class="product" name="Chair" href=""><img src="" width="300" height="300"></a>
+        				<h3>Product1</h3>
+        			</div>
+        		</div>
+
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a class="product" name="Chair" href=""><img src="" width="300" height="300"></a>
+        				<h3>Product1</h3>
+        			</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a href=""><img src="" width="300" height="300"></a>
+        				<h3>Product2</h3>
+        			</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a href=""><img src="" width="300" height="300"></a>
+        				<h3>Product3</h3>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a href=""><img src="" width="300" height="300"></a>
+        				<h3>Product4</h3>
+        		</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a href=""><img src="" width="300" height="300"></a>
+        				<h3>Product5</h3>
+        			</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a href=""><img src="" width="300" height="300"></a>
+        				<h3>Product6</h3>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a href=""><img src="" width="300" height="300"></a>
+        				<h3>Product7</h3>
+        		</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a href=""><img src="" width="300" height="300"></a>
+        				<h3>Product8</h3>
+        			</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="center-text">
+        				<a href=""><img src="" width="300" height="300"></a>
+        				<h3>Product9</h3>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+          </div>
+					</form>
+          <!-- <?php
+          if(!empty($_POST["recent"])){
+            $data = unserialize(base64_decode($_COOKIE['mostVisited']));
+            foreach($data as $key => $value){
+              echo "This is cookie: <tr>
+                     <td bgcolor=\"#F0E68C\">$key</td>
+                     <td bgcolor=\"#F0E68C\">$value</td>
+                     </tr>";
+                   }
+          }
+        ?> -->
+			<!-- <a href="parseDOM.php">Parse DOM</a> -->
+        </div>
+      </div> --}}
+</body>
+</html>
