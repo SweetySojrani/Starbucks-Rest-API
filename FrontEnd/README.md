@@ -41,3 +41,7 @@ Install the Eclipse plugins
 
 6.  Start to write code
 
+7.  Run as node application in Eclipse IDE
+
+8.  Go to browser to open http://localhost:3000/
+
