@@ -13,6 +13,10 @@ Discuss about the application domain and split microservices to team members.
   - Analyzed the Golabs code to understand the design of GO API microservices.
   - Explored the Payment feature of the application and designed the MongoDB database.
 
+- Lakshmi
+  - Understand Starbucks Java Code from Professor
+  - Go through GOAPI for gumball from Professor
+
 ### Week 2
 
 
@@ -27,6 +31,10 @@ Discuss about the application domain and split microservices to team members.
   
 - Sweety
   - Created test cases for payment and started creating the Go API.
+  
+- Lakshmi
+  - Come up with Structure for Product Catalog
+  - Build Product Catalog and test it locally
   
 ### Week 3
 
@@ -53,6 +61,10 @@ Notes:
 - Sweety
   - Tested the GO API created for payment of the application locally.
 
+- Lakshmi
+  - Start building GOAPI route for products
+  - Complete building /ping and /products routes for GET requests
+
 ### Week 4  
 
 
@@ -66,7 +78,6 @@ Notes:
   - Tested creating and processing order part and deployed to AWS
   - Decided to use NodeJS as frontend framework
 - Lakshmi
-   - Create product catalog and integrate with the database schema
    - Added Nodejs API routes for Users and Products
    - Next steps:
       - add remaining API routes
