@@ -80,8 +80,15 @@
 						{{#each productsData as |product| }}
 							<div class="col-md-4">
 	        			<div class="center-text">
-	        				<a class="product" name="Chair" href=""><img src="" width="300" height="300"></a>
-	        				<h3>{{ product.name }}</h3>
+									<div>
+	        				 <a class="product" name="Chair" href="#"><img src={{product.image_url}} width="300" height="300"></a>
+									</div>
+									<div class="col-md-3">
+	        					<h3>{{ product.name }}</h3>
+									</div>
+									<div class="col-md-2">
+										<h3>{{ product.price }}</h3>
+									</div>
 	        			</div>
 	        		</div>
 						{{/each}}

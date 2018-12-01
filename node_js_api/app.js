@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const expressHandlebars = require("express-handlebars");
 var Client = require("node-rest-client").Client;
+const axios = require("axios");
 const port = 4000;
 
 const hbs = expressHandlebars.create({
@@ -26,14 +27,11 @@ app.get("/products", (req, res) => {
     { name: "Coffee", count: 10 },
     { name: "Tea", count: 900 }
   ];
-  client.get("http://localhost:3000/products", (data, response_raw) => {
-    productsData = data[0];
-    console.log(productsData.name);
-    // for (var key in data) {
-    //   console.log("key: ", key, " val: ", data[key]);
-    // }
+  axios.get("http://localhost:3000/products").then(function(productsData) {
+    productsData = productsData.data;
+    console.log(productsData.data);
+    res.render("product", { productsData: productsData });
   });
-  res.render("product", { productsData: productsData });
 });
 
 app.listen(port, () => {
