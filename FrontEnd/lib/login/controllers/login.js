@@ -2,6 +2,7 @@ var exports = module.exports;
 
 var greeter   = require('../models/greeter');
 
+
 exports.loginForm = function(req, res) {
 
   var name = req.query.name || "";
@@ -21,7 +22,9 @@ exports.loginForm = function(req, res) {
 
 exports.loginSubmit = function(req, res) {
 
-	  var name = req.query.name || "";
+	const http = require('http');
+ 
+	var name = req.query.name || "";
 
 	  var context = {
 	    siteTitle: "Home"
@@ -37,3 +40,20 @@ exports.loginSubmit = function(req, res) {
 	  // res.status(200).send('Hello World');
 	};
 
+
+	http.get('http://localhost:3001/goapi?api_key=DEMO_KEY', (resp) => {
+	  let data = '';
+
+	  // A chunk of data has been recieved.
+	  resp.on('data', (chunk) => {
+	    data += chunk;
+	  });
+
+	  // The whole response has been received. Print out the result.
+	  resp.on('end', () => {
+	    console.log(JSON.parse(data).explanation);
+	  });
+
+	}).on("error", (err) => {
+	  console.log("Error: " + err.message);
+	});

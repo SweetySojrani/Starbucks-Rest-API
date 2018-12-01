@@ -116,6 +116,8 @@ func gumballUpdateHandler(formatter *render.Render) http.HandlerFunc {
 
 //hnote: API login post check user name and password
 func gumballLoginHandler(formatter *render.Render) http.HandlerFunc {
+	
+	
 	return func(w http.ResponseWriter, req *http.Request) {
 
 //       type Person struct {
