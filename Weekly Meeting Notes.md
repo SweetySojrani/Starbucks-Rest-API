@@ -62,8 +62,8 @@ Notes:
   - Tested the GO API created for payment of the application locally.
 
 - Lakshmi
- - Start building GOAPI route for products
- - Complete building /ping and /products routes for GET requests
+  - Start building GOAPI route for products
+  - Complete building /ping and /products routes for GET requests
 
 ### Week 4  
 
