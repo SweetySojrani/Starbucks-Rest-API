@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const expressHandlebars = require("express-handlebars");
-var Client = require("node-rest-client").Client;
 const axios = require("axios");
 const port = 4000;
 
@@ -33,6 +32,9 @@ app.get("/products", (req, res) => {
     res.render("product", { productsData: productsData });
   });
 });
+
+//Get each Product
+app.get("/products/:id", (req, res) => {});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

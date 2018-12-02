@@ -1,23 +1,44 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
-	"encoding/json"
+
 	"github.com/codegangsta/negroni"
 	//"github.com/streadway/amqp"
 	"github.com/gorilla/mux"
 	"github.com/unrolled/render"
 	//"github.com/satori/go.uuid"
 	"gopkg.in/mgo.v2"
-  "gopkg.in/mgo.v2/bson"
+	"gopkg.in/mgo.v2/bson"
 )
 
 // MongoDB Config
-var mongodb_server = "52.9.120.158"
-var mongodb_database = "cmpe281"
-var mongodb_collection = "products"
+var (
+	mongodb_server        = "13.52.50.11"
+	mongodb_database      = "cmpe281"
+	mongodb_collection    = "products"
+	mongoAuthenticationDb = "admin"
+	mongoUsername         = "admin"
+	mongoPassword         = "cmpe281"
+)
+
+func getMongoSession() *mgo.Session {
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Database: mongoAuthenticationDb,
+		Username: mongoUsername,
+		Password: mongoPassword,
+	}
+	session, err := mgo.DialWithInfo(info)
+	if err != nil {
+		panic(err)
+	}
+	session.SetMode(mgo.Monotonic, true)
+	return session
+}
 
 // NewServer configures and returns a Server.
 func NewServer() *negroni.Negroni {
@@ -35,10 +56,8 @@ func NewServer() *negroni.Negroni {
 func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.HandleFunc("/ping", pingHandler(formatter)).Methods("GET")
 	mx.HandleFunc("/products", productHandler(formatter)).Methods("GET")
-	mx.HandleFunc("/products", productUpdateHandler(formatter)).Methods("PUT")
-	// mx.HandleFunc("/order/{id}", gumballOrderStatusHandler(formatter)).Methods("GET")
-	// mx.HandleFunc("/order", gumballOrderStatusHandler(formatter)).Methods("GET")
-	// mx.HandleFunc("/orders", gumballProcessOrdersHandler(formatter)).Methods("POST")
+	mx.HandleFunc("/products/{id}", productUpdateHandler(formatter)).Methods("PUT")
+	mx.HandleFunc("/products/{id}", productStatusHandler(formatter)).Methods("GET")
 }
 
 // Helper Functions
@@ -59,61 +78,67 @@ func pingHandler(formatter *render.Render) http.HandlerFunc {
 //API Products Handler
 func productHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-    info := &mgo.DialInfo{
-      Addrs:    []string{"52.9.120.158"},
-      Database: "admin",
-      Username: "admin",
-      Password: "cmpe281",
-    }
-    session, err := mgo.DialWithInfo(info)
-    if err != nil {
-        panic(err)
-    }
-        defer session.Close()
-        session.SetMode(mgo.Monotonic, true)
-        c := session.DB(mongodb_database).C(mongodb_collection)
-        var result []bson.M
-        err = c.Find(nil).All(&result)
-        if err != nil {
-                log.Fatal(err)
-        }
-        fmt.Println("All Products:", result )
+		session := getMongoSession()
+		defer session.Close()
+
+		c := session.DB(mongodb_database).C(mongodb_collection)
+		var result []bson.M
+		err := c.Find(nil).All(&result)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("All Products:", result)
 		formatter.JSON(w, http.StatusOK, result)
 	}
 }
-//
-// // API Update Products Inventory
+
+// API Update Products Inventory based on given Id
 func productUpdateHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-    	var m product
-    	_ = json.NewDecoder(req.Body).Decode(&m)
-    	fmt.Println("Update Product Inventory To: ", m.Count)
-      info := &mgo.DialInfo{
-        Addrs:    []string{"52.9.120.158"},
-        Database: "admin",
-        Username: "admin",
-        Password: "cmpe281",
-      }
-		session, err := mgo.DialWithInfo(info)
-        if err != nil {
-                panic(err)
-        }
-        defer session.Close()
-        session.SetMode(mgo.Monotonic, true)
-        c := session.DB(mongodb_database).C(mongodb_collection)
-        fmt.Printf("name is (%s)", m.Name)
-        query := bson.M{"name" : m.Name}
-        change := bson.M{"$set": bson.M{ "count" : m.Count}}
-        err = c.Update(query, change)
-        if err != nil {
-                log.Fatal(err)
-        }
-       	var result bson.M
-        err = c.Find(bson.M{"name" : m.Name}).One(&result)
-        if err != nil {
-                log.Fatal(err)
-        }
-        fmt.Println("Products:", result )
+		params := mux.Vars(req)
+		var productID string
+		productID = params["id"]
+		var m product
+		_ = json.NewDecoder(req.Body).Decode(&m)
+		log.Println("Update Product Inventory To: ", m.Count)
+		session := getMongoSession()
+		defer session.Close()
+
+		c := session.DB(mongodb_database).C(mongodb_collection)
+		fmt.Printf("name is (%s)", m.Name)
+		query := bson.M{"_id": bson.ObjectIdHex(productID)}
+		change := bson.M{"$set": bson.M{"count": m.Count}}
+		err := c.Update(query, change)
+		if err != nil {
+			log.Fatal(err)
+		}
+		var result bson.M
+		err = c.Find(bson.M{"_id": bson.ObjectIdHex(productID)}).One(&result)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("Product:", result)
+		formatter.JSON(w, http.StatusOK, result)
+	}
+}
+
+//API GET each Product
+func productStatusHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		params := mux.Vars(req)
+		var productID string
+		productID = params["id"]
+		log.Printf("product id requested is (%s)", productID)
+
+		session := getMongoSession()
+		defer session.Close()
+		var result bson.M
+		c := session.DB(mongodb_database).C(mongodb_collection)
+		err := c.FindId(bson.ObjectIdHex(productID)).One(&result)
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Printf("Your Product: (%s)", result)
 		formatter.JSON(w, http.StatusOK, result)
 	}
 }
@@ -218,4 +243,4 @@ func productUpdateHandler(formatter *render.Render) http.HandlerFunc {
 
     db.products.remove({})
 
- */
+*/
