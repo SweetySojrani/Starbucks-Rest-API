@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: starbucks
+  namespace: starbucks
+  labels:
+    name: starbucks
+spec:
+  containers:
+  - name: starbucks
+    image: vera37/starbucks:starbucks-pod
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 3000
+      name: http
+      protocol: TCP
