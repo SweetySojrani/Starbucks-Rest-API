@@ -228,7 +228,7 @@ func productStatusHandler(formatter *render.Render) http.HandlerFunc {
 
     -- Products MongoDB Collection - Find Product Document --
 
-    db.products.find( { "name" : "Iced lemon pond cake" } ) ;
+    db.products.find( { "name" : "Iced lemon pound cake" } ) ;
 
     {
     "_id": "5c0249158a65bd82055aa9fb",

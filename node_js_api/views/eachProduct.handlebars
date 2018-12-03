@@ -35,7 +35,7 @@
 	<!-- <p> <?php  print_r($_COOKIE["visitCount"][0]) ?> hhshah</p> -->
   <br/>
   <div class="row text-center">
-    <img src="starbucks.png" class="img-circle" alt="Cinque Terre" width="200" height="200">
+    <img src="" class="img-circle" alt="Cinque Terre" width="200" height="200">
   </div>
   <br/>
 	<div class="container-fluid">
@@ -63,23 +63,26 @@
             }
           };
 </script> -->
-        <form action="" method="post">
+        <form action="/orders" method="post">
         	<div class="row">
 						{{!-- <h1>{{productsData.HELLO}}</h1> --}}
 						<div class="col-md-4">
 	        		<div class="center-text">
 							 <div>
-	        				<a class="product" name="Chair" href="#"><img src={{product.image_url}} width="300" height="300"></a>
-							 </div>
-								<div class="col-md-3">
-	        				<h3>{{ product.name }}</h3>
-								</div>
-								<div class="col-md-2">
-									<h3>{{ product.price }}</h3>
-								</div>
+	        				<a class="product" name="product_image" href={{productData.image_url}}><img src="{{productData.image_url}}" width="300" height="300"></a>
+	        				<h3>{{ productData.name }}</h3>
+									<h3>{{ productData.description }}</h3>
+									<h3>{{ productData.price }}</h3>
+									<input type="hidden" name="product_id" value="{{productData._id}}">
+									<input type="hidden" name="product_name" value="{{productData.name}}">
+									<input type="hidden" name="product_description" value="{{productData.description}}">
+									<input type="hidden" name="product_image" value="{{productData.image_url}}">
+									<input type="hidden" name="product_price" value="{{productData.price}}">
+									<input type="hidden" name="product_count" value="{{productData.count}}">
 	        		</div>
 	        	</div>
 					</div>
+					<button class="btn btn-success">Order</button>
         </form>
 </body>
 </html>
