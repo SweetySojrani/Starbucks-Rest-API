@@ -1,5 +1,5 @@
 app:
-  port: 3000
+  port: 4000
   pub_dir: "/public"
   csrf: false
   cookie_secret: "Your secret key salt goes here. Replace with random, long string in your project."

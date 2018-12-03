@@ -1,10 +1,12 @@
-<ul>
-  {{#each productsData}}
-  <li>{{name}} <BR> <img height=100px src="/images/{{image}}"></li>
-  
-  {{/each}}
-
-  <li><a href="/products/id?id=2">test</a></li>
-
-
-</ul>
+<div>
+  <div class="row">
+    {{#each productsData}}
+      <div class="col-md-4">
+        <div class="center-text">
+           <a class="product" name="Chair" href="/products/id?id={{_id}}"><img src={{image_url}} width="300" height="300"></a><br/>
+            <h3>{{ name }}</h3>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
