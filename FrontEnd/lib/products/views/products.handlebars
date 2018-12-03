@@ -1,53 +1,5 @@
-<div>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<div class="row">
-		<div class="col-md-1">
-		</div>
-		
-		<div class="col-md-2">
-		<br/><br/><br/>
-			<h3>Hot Coffees</h3>
-		</div>	
-		<div class="col-md-2" align="center">
-			<a href="/order?id=1"> <img src="/images/menu1.png" width="175" height="175"/></a>
-			<br/>
-			<h5>Caffe Americano</h5>
-		</div>	
-		<div class="col-md-2"  align="center">
-			<a href="/order?id=3"> <img src="/images/menu3.png" width="175" height="175"/></a>
-			<br/>
-			<h5>Cinnamon Dolce Latte</h5>
-		</div>	
-		<div class="col-md-2"  align="center">
-			<a href="/order?id=4"> <img src="/images/menu4.png" width="175" height="175"/></a>
-			<br/>
-			<h5>Starbucks Reserve Latte</h5>
-		</div>	
-	</div>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<div class="row">
-		<div class="col-md-1">
-		</div>
-		<div class="col-md-2">
-			<br/><br/><br/>
-			<h3>Hot Drinks</h3>
-		</div>
-		<div class="col-md-2" align="center">
-			<a href="/order?id=2"><img src="/images/menu2.png" width="175" height="175"/></a>
-			<br/>
-			<h5>White Hot Chocolate</h5>
-		</div>	
-		</div>	
-	</div>
-	<br/>
- 
-</div>
-
+<ul>
+  {{#each items}}
+  <li>{{name}}</li>
+  {{/each}}
+</ul>

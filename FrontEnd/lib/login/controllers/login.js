@@ -37,12 +37,6 @@ exports.loginSubmit = function(req, res) {
 	  ,pageDescr: "Welcome to our Starbucks Club"
 	  };
 	  
-
-
-	  
-	  
-	  
-	 
 	  
 	  var name=req.body.username;
 	  var password=req.body.password; 
