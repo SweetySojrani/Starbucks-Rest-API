@@ -1,17 +1,14 @@
 <div class="form-group">
 	<div class="row">
-		<div class="col-md-12 col-sm-12">
-		 <button type="button" class="btn btn-secondary" onclick="location.href='/products'">Back to Memu</button>
-		</div>
 		<div class="col-md-2 col-sm-12">
 			<b><h3>{{product}}</h3></b>
 			<p class="text-muted">{{description}}</p>
 			<label> Price: ${{price}} </label>
 			<br/>
-			<button type="button" class="btn btn-success btn-lg"  onclick="location.href='/pay?id={{productId}}'">&nbsp;&nbsp;&nbsp;Pay Now&nbsp;&nbsp;</button>
+			<button type="button" class="btn btn-success btn-lg"  onclick="location.href='/pay?id={{orderId}}'">&nbsp;&nbsp;&nbsp;Pay Now&nbsp;&nbsp;</button>
 		</div>
 		<div class="col-md-2 col-sm-12" align="center">
-			<a href="#order"> <img src="/images/menu{{productId}}.png" width="400" /></a>
+			<a href="#order"> <img src={{imageUrl}} width="400" /></a>
 		</div>
 
 	</div>
