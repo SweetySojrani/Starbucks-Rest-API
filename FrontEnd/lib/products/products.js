@@ -22,4 +22,4 @@ router.models       = require('./models');
 
 router.get('/', router.callbacks.products);
 
-
+router.get('/id/', router.callbacks.product);
