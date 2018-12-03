@@ -17,16 +17,13 @@ exports.products = function(req, res) {
 	   ,pageDescr: "Our Wonderful Product List"
 	   ,productsData: productsData
 	   ,  items: [
-		    {name: "Handlebars", emotion: "love"},
-		    {name: "Mustache", emotion: "enjoy"},
-		    {name: "Ember", emotion: "want to learn"}
+		    {name: "Coffee1", image: "menu1.png"},
+		    {name: "Coffee2", image: "menu2.png"},
+		    {name: "Coffee3", image: "menu3.png"}
 		  ]
 	   
 	  };
 
-	  
-	  
-	  
 	  var template = __dirname + '/../views/products';
 	  res.render(template, context);
  
