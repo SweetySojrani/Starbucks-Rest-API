@@ -24,5 +24,5 @@ router.get('/', router.callbacks.order);
 router.post('/', router.callbacks.order);
 router.post('/id/', router.callbacks.completeOrder);
 router.get('/id/', router.callbacks.orders);
-
+router.get('/history', router.callbacks.orders);
 

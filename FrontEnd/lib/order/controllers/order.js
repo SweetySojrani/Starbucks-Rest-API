@@ -3,7 +3,7 @@ var exports = module.exports;
 var greeter   = require('../models/greeter');
 const axios = require('axios');
 
-exports.order = function(req, res) {
+exports.createOrder = function(req, res) {
 
 	var productId = req.body.product_id;
 	var productName = req.body.product_name;
@@ -19,14 +19,15 @@ exports.order = function(req, res) {
 	var orderId;
 	var userId;
 	//var url = "52.52.214.192:3000";
-	var url = "http://localhost:3000/user/123/order";
+	var url = "http://localhost:3000/user/234/order";
 
 	axios.post(url, {
-		Items: [{
+		Items: {
 			Name: productName,
 			Price: price,
-			Quantity: quantity
-		}]
+			Quantity: 1,
+			Size: "small"
+		}
 	}).then(function (response) {
 	//	console.log(response);
 		console.log(response.data);
@@ -53,13 +54,37 @@ exports.order = function(req, res) {
  
 };
 
+exports.getOrderStatus = function(req, res) {
+	var orderId = req.query.id;
+	var userId;
+	var orderData;
+
+	var url = "http://localhost:3000/user/234/order/" + orderId;
+
+	var context = {
+	    siteTitle: "My Orders"
+	  ,pageDescr: "My Order Detail"
+	};
+
+	axios.get(url).then(function (response) {
+		console.log(response.data);
+		context.orderData = response.data;
+		res.render(template, context);
+	}).catch(function (error) {
+		console.log(error);
+	});
+
+	var template = __dirname + '/../views/orderDetail';
+
+}
+
 exports.completeOrder = function(req, res){
 
 	 var orderId = req.query.order_id;
 	 var userId;
 	 var orderStatus;
 
-	 var url = "http://localhost:3000/user/123/order/" + orderId;
+	 var url = "http://localhost:3000/user/234/order/" + orderId;
 
 	 axios.post(url).then(function (response) {
 		console.log(response);
@@ -74,37 +99,26 @@ exports.completeOrder = function(req, res){
 exports.orders = function(req, res) {
 
 	var userId;
-	var url = "http://localhost:3000/user/123/orders";
-	var ordersData;
+	var url = "http://localhost:3000/user/234/orders";
+	let ordersData = [];
 
 	var context = {
 	    siteTitle: "My Orders"
 	  ,pageDescr: "My Orders History"
 	};
 
+
 	axios.get(url).then(function (response){
-		console.log(response);
+		
+		console.log(response.data);
 		context.ordersData = response.data;
+	//	console.log(context);
+		res.render(template, context);
 	}).catch(function (error) {
 		console.log(error);
 	});
 
-	var template = __dirname + '/../views/orders';
-	res.render(template, context);
 
+	var template = __dirname + '/../views/orders';
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
