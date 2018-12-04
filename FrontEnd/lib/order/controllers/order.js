@@ -5,27 +5,33 @@ const axios = require('axios');
 
 exports.order = function(req, res) {
 
-	var productId = req.query.product_id;
-	var productName = req.query.product_name;
-	var description = req.query.product_description;
-	var image = req.query.product_image;
-	var price = req.query.product_price;
-	var quantity = req.query.product_count;
+	var productId = req.body.product_id;
+	var productName = req.body.product_name;
+	var description = req.body.product_description;
+	var image = req.body.product_image;
+	var price = req.body.product_price;
+	var quantity = req.body.product_count;
+
+	console.log(productName);
+	console.log(price);
+	console.log(quantity);
 
 	var orderId;
 	var userId;
 	//var url = "52.52.214.192:3000";
-	var url = "localhost:3000/user/123/order";
+	var url = "http://localhost:3000/user/123/order";
 
 	axios.post(url, {
-		Items: {
+		Items: [{
 			Name: productName,
 			Price: price,
 			Quantity: quantity
-		}
+		}]
 	}).then(function (response) {
-		console.log(response);
+	//	console.log(response);
+		console.log(response.data);
 		orderId = response.data.OrderId;
+		console.log("orderID:" + orderId);
 	}).catch(function (error) {
 		console.log(error);
 	});
@@ -53,7 +59,7 @@ exports.completeOrder = function(req, res){
 	 var userId;
 	 var orderStatus;
 
-	 var url = "localhost:3000/user/123/order/" + orderId;
+	 var url = "http://localhost:3000/user/123/order/" + orderId;
 
 	 axios.post(url).then(function (response) {
 		console.log(response);

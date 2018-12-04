@@ -21,5 +21,8 @@ router.models       = require('./models');
 // Module's Routes. Please note this is actually under /hello, because module is attached under /hello
 
 router.get('/', router.callbacks.order);
+router.post('/', router.callbacks.order);
+router.post('/id/', router.callbacks.completeOrder);
+
 
 
