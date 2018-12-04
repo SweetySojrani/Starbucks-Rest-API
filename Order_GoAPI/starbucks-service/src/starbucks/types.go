@@ -9,7 +9,7 @@ type orderItem struct {
 
 type order struct {
 	OrderId     string
-	Items       []orderItem
+	Items       orderItem
 	UserId      string
 	OrderStatus string
 }

@@ -15,8 +15,9 @@ import (
 
 // MongoDB Config
 //var mongodb_server = "mongo-service"
-var mongodb_server = "54.183.73.159:27017"
+//var mongodb_server = "54.183.73.159:27017"
 //var mongodb_server = "18.144.31.55:27017"
+var mongodb_server = "localhost:27017"
 var mongodb_database = "cmpe281"
 var mongodb_collection = "starbucks"
 
