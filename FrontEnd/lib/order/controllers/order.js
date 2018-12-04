@@ -71,6 +71,38 @@ exports.completeOrder = function(req, res){
 
 }
 
+exports.orders = function(req, res) {
+
+	var userId;
+	var url = "http://localhost:3000/user/123/orders";
+	var ordersData;
+
+	var context = {
+	    siteTitle: "My Orders"
+	  ,pageDescr: "My Orders History"
+	};
+
+	axios.get(url).then(function (response){
+		console.log(response);
+		context.ordersData = response.data;
+	}).catch(function (error) {
+		console.log(error);
+	});
+
+	var template = __dirname + '/../views/orders';
+	res.render(template, context);
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 

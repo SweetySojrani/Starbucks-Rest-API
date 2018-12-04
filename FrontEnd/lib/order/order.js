@@ -23,6 +23,6 @@ router.models       = require('./models');
 router.get('/', router.callbacks.order);
 router.post('/', router.callbacks.order);
 router.post('/id/', router.callbacks.completeOrder);
-
+router.get('/id/', router.callbacks.orders);
 
 
