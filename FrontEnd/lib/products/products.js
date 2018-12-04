@@ -9,6 +9,7 @@ module.exports = router;
 
 // Don't just use, but also export in case another module needs to use these as well.
 router.callbacks    = require('./controllers/products');
+router.callbacks1	= require('../order/controllers/order');
 router.models       = require('./models');
 
 //-- For increased module encapsulation, you could also serve templates with module-local
@@ -23,3 +24,5 @@ router.models       = require('./models');
 router.get('/', router.callbacks.products);
 
 router.get('/id/', router.callbacks.product);
+
+//router.post('/', router.callbacks1.order);
