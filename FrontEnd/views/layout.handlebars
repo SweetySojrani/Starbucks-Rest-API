@@ -37,7 +37,7 @@
 				<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
-                        <strong>{{#sessionN}}{{/sessionN}}{{session.id}}</strong>
+                        <strong>{{sessionN}}</strong>
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -50,7 +50,7 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-8">
-                                        <p class="text-left">Hi,<strong>{{#sessionN}}{{/sessionN}}</strong></p>
+                                        <p class="text-left text-primary  bg-dark font-weight-bold">Hi,<strong>{{sessionN}}</strong></p>
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +61,8 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <p>
-                                      {{#if 1}}
-                                            <a href="/login?action=logoff" class="btn btn-danger btn-block">Log Off</a>
+                                      {{#if sessionNB}}
+                                            <a href="/login/off" class="btn btn-danger btn-block">Log Off</a>
                                       {{else}}      
                                       		<a href="/login" class="btn btn-danger btn-block">Login</a>
   									  {{/if}}

@@ -23,12 +23,22 @@ exports.setup = function(runningApp, callback) {
   
   var handlbars = require('hbs');
   handlbars.registerHelper("sessionN", function(input){
-  	  //console.log('test registerHelper');
-  	  //return "hello"; //session.get("name");
-	  console.log(sa.name);
-	  return sa.name;
+	  //console.log(runningApp.get('sname'));
+	  return runningApp.get('sname');
   	});
-
+  
+  handlbars.registerHelper("sessionNB", function(input){
+	  var sname=runningApp.get('sname');
+	  if (typeof sname !== 'undefined' && sname !== null && sname!=='') {
+		  console.log("true");
+		  return true;
+	  }
+	  else {
+		  console.log("false");
+		  return false;
+	  }
+  	});
+  
   
   runningApp.engine('handlebars', handlbars.__express);//  require('hbs').__express);
 

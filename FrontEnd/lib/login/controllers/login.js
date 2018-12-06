@@ -2,37 +2,48 @@ var exports = module.exports;
 
 var greeter   = require('../models/greeter');
 
-var apiserver = '54.176.179.159';
 
+
+
+exports.logoff = function(req, res) {
+	
+	 var sessData = req.session;
+	  sessData.id='';
+	  sessData.name = '';
+	  req.app.set('sname', '');
+      res.redirect('/mycards');
+
+	};
 
 exports.loginForm = function(req, res) {
 
   var name = req.query.name || "";
   var error=req.query.error;
-  var context = "";
-  var sessData = req.session;
-  var id = sessData.id;
-  var username = sessData.name;
-  
-  if (!id.trim()) {
-	  context = {
-				siteTitle: "Welcome"
-				  , welcomeMessage: greeter.welcomeMessage(username)
-				  ,pageDescr: "Welcome to the Starbucks Online Store"
+ 
+  var sname=req.session.name;
+  if (typeof sname !== 'undefined' && sname !== null && sname!=='') {
+	  var context = {
+				siteTitle: "Profile"
+				  , welcomeMessage: greeter.welcomeMessage(name)
+				  ,pageDescr: "Welcome,"+req.session.name+"!"
 			  };
 			 
-  } else {
-	  context = {
-				siteTitle: "Login Form"
-				  , welcomeMessage: greeter.welcomeMessage(name)
-				  ,pageDescr: "Let's login to go further"
-				  ,error: error
-			  };
+			  var template = __dirname + '/../views/profile';
+			  res.render(template, context);	  
+  }
+  else {
+
+	  var context = {
+		siteTitle: "Login Form"
+		  , welcomeMessage: greeter.welcomeMessage(name)
+		  ,pageDescr: "Let's login to go further"
+		  ,error: error
+	  };
+	 
+	  var template = __dirname + '/../views/loginForm';
+	  res.render(template, context);
   }
   
-  var template = __dirname + '/../views/loginForm';
-  res.render(template, context);
-
 };
 
 exports.loginSubmit = function(req, res) {
@@ -50,7 +61,7 @@ exports.loginSubmit = function(req, res) {
 	  });
 
 	  var options = {
-	    hostname: apiserver,
+	    hostname: '192.168.137.203',
 	    port: 3000,
 	    path: '/login',
 	    method: 'POST',
@@ -81,22 +92,29 @@ exports.loginSubmit = function(req, res) {
 		     var jdata=JSON.parse(data);
 		     if(jdata.hasOwnProperty('error')){
 		    	 res.redirect('/login?error='+jdata.error);
-           	 }
+		     }
              else {
+
+            	 
             	 var sessData = req.session;
             	  sessData.id=jdata._id
             	  sessData.name = jdata.name;
-            	  console.log(sessData.id);
-            	  console.log(sessData.name);
+            	  req.app.set('sname', sessData.name);  //hnote: store for hbs
+            	  //console.log(sessData.name);
             	 res.redirect('/mycards');
 			  }
+		    
 		  });
+
 	  });
+
 	  req2.on('error', (e) => {
 	    console.error(e);
 	  }); 
+	  
 	  req2.write(postData);
 	  //req2.end();	  
+	  
 	};
 
 	
@@ -115,7 +133,7 @@ exports.loginSubmit = function(req, res) {
 		  });
 
 		  var options = {
-		    hostname: apiserver,
+		    hostname: '192.168.137.203',
 		    port: 3000,
 		    path: '/signup',
 		    method: 'POST',
@@ -138,8 +156,8 @@ exports.loginSubmit = function(req, res) {
 			  });
 			  // The whole response has been received. Print out the result.
 			  res2.on('end', () => {
-				 console.log(data);
-			     console.log(data.length);
+				 //console.log(data);
+			     //console.log(data.length);
 			     //console.log(name);
 			     //console.log(password);
 			    
