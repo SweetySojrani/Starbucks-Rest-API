@@ -77,6 +77,7 @@ Notes:
   - Try to discuss with team on integration and possible Kong gateway routes
   - Tested creating and processing order part and deployed to AWS
   - Decided to use NodeJS as frontend framework
+  - Implement frontend order part function
 - Lakshmi
    - Added Nodejs API routes for Users and Products
    - Next steps:
@@ -90,12 +91,13 @@ Notes:
     - Explore different features of Kubernetes and decide how it can be well utilized for the deployment.
     - Test the integration of the APIs with Node js.
 
-## Week 5 (planning)
+## Week 5 
 
 - Vera
   - Enable sharding on orders collection
-  - Run server with Kubernetes and deploy to AWS
+  - Run server with Docker and deploy to AWS
   - Start integration with frontend
+  - Added shopping cart function in frontend
 
 
 
