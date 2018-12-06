@@ -11,7 +11,7 @@ exports.logoff = function(req, res) {
 	  sessData.id='';
 	  sessData.name = '';
 	  req.app.set('sname', '');
-      res.redirect('/mycards');
+      res.redirect('/');
 
 	};
 

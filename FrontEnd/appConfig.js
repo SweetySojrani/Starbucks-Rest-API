@@ -23,7 +23,7 @@ exports.setup = function(runningApp, callback) {
   
   var handlbars = require('hbs');
   handlbars.registerHelper("sessionN", function(input){
-	  //console.log(runningApp.get('sname'));
+	  console.log(runningApp.get('sname'));
 	  return runningApp.get('sname');
   	});
   
