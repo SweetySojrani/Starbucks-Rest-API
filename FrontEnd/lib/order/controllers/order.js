@@ -9,9 +9,9 @@ exports.createOrder = function(req, res) {
 	console.log(req.session.cart);
 
 	var orderId;
-	var userId;
+	var userId = req.session.id;
 	//var url = "52.52.214.192:3000";
-	var url = "http://localhost:3000/user/234/order";
+	var url = "http://localhost:3000/user/" + userId + "/order";
 
 	axios.post(url, {
 		Items: req.session.cart.items
@@ -41,10 +41,10 @@ exports.createOrder = function(req, res) {
 
 exports.getOrderStatus = function(req, res) {
 	var orderId = req.query.id;
-	var userId;
+	var userId = req.session.id;;
 	var orderData;
 
-	var url = "http://localhost:3000/user/234/order/" + orderId;
+	var url = "http://localhost:3000/user/" + userId + "/order/" + orderId;
 
 	var context = {
 	    siteTitle: "My Orders"
@@ -66,10 +66,10 @@ exports.getOrderStatus = function(req, res) {
 exports.completeOrder = function(req, res){
 
 	 var orderId = req.query.order_id;
-	 var userId;
-	 var orderStatus;
+	 var userId = req.session.id;
+	 
 
-	 var url = "http://localhost:3000/user/234/order/" + orderId;
+	 var url = "http://localhost:3000/user/" + userId + "/order/" + orderId;
 
 	 axios.post(url).then(function (response) {
 		console.log(response);
@@ -89,9 +89,10 @@ exports.completeOrder = function(req, res){
 
 exports.orders = function(req, res) {
 
-	var userId;
-	var url = "http://localhost:3000/user/234/orders";
-	let ordersData = [];
+	var userId = req.session.id;
+	
+	var url = "http://localhost:3000/user/" + userId + "/orders";
+	var ordersData;
 
 	var context = {
 	    siteTitle: "My Orders"
