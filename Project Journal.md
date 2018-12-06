@@ -131,6 +131,27 @@
 
   ![1543559794105](./README.assets/1543559794105.png)
 
+## Week #5
+
+### Part 1 - Go API for Login (Yinghua)
+
+- #### What I have done this week
+
+  - Implemented the Login nodejs page
+  - Implemented the go api for login
+
+
+## Week #6
+
+### Part 1 - Go API for Login (Yinghua)
+
+- #### What I have done this week
+
+  - Implemented the sign up nodejs page
+  - Implemented the go api for sing up
+
+
+
 
 ## Create Product Catalog 
 
