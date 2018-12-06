@@ -1,0 +1,19 @@
+    <form id="Login" class="col-md-4 col-sm-12" method="post" action="/login">
+        <p class="text-warning">{{error}}</p>
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" id="username" placeholder="username">
+
+        </div>
+
+        <div class="form-group">
+
+            <input type="password" class="form-control" name="password" id="password" placeholder="password">
+
+        </div>
+        <div class="forgot">
+        <a href="reset.html">Forgot password?</a>
+       </div>
+       <button type="submit" class="btn btn-primary">Login</button>
+ 	   <button type="submit" class="btn btn-secondary" onclick="$('#Login').attr('action', '/login/signup').submit();">Sign Up</button>
+    </form>
+ 

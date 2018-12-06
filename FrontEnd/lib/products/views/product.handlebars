@@ -1,0 +1,21 @@
+<form action="/order" method="post">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="center-text">
+        <a class="product" name="Chair" href="#"><img src={{productData.image_url}} width="300" height="300"></a><br/>
+      </div>
+    </div>
+    <div class="center-text">
+      <h3>{{ productData.name }}</h3>
+      <h3>{{productData.description}}</h3>
+      <h3>Price:  ${{productData.price}}</h3><br/>
+      <input type="hidden" name="product_id" value="{{productData._id}}">
+      <input type="hidden" name="product_name" value="{{productData.name}}">
+      <input type="hidden" name="product_description" value="{{productData.description}}">
+      <input type="hidden" name="product_image" value="{{productData.image_url}}">
+      <input type="hidden" name="product_price" value="{{productData.price}}">
+      <input type="hidden" name="product_count" value="{{productData.count}}">
+      <button class="btn btn-md btn-success">Add to cart</button>
+    </div>
+  </div>
+</form>
