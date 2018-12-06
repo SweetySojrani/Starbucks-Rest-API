@@ -1,0 +1,24 @@
+<div class="form-group">
+    <div class="row">
+        {{#each productsData}}
+            <div class="col-md-4">
+              <div class="center-text">
+                <a class="product" name={{name}} href="#"><img src={{image_url}} width="100" height="100"></a><br/>
+              </div>
+            </div>
+            <div class="center-text">
+              <h4>{{name}}</h4>
+              <h4>{{description}}</h4>
+              <h4>Price:  ${{price}}</h4>
+              <br/>
+            </div>
+        {{/each}}
+    </div>
+    <div class="row">
+      <h4> Total Price: ${{total}} </h4>
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-success btn-lg"  onclick="location.href='/pay?id={{orderId}}'">&nbsp;&nbsp;&nbsp;Pay Now&nbsp;&nbsp;
+      </button>
+    </div>
+</div>
