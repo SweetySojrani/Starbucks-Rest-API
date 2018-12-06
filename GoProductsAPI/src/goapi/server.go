@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/codegangsta/negroni"
 	//"github.com/streadway/amqp"
@@ -17,7 +18,7 @@ import (
 
 // MongoDB Config
 var (
-	mongodb_server        = "13.52.50.11"
+	mongodb_server        string //= "13.52.50.11"
 	mongodb_database      = "cmpe281"
 	mongodb_collection    = "products"
 	mongoAuthenticationDb = "admin"
@@ -26,6 +27,8 @@ var (
 )
 
 func getMongoSession() *mgo.Session {
+	mongodb_server = os.Getenv("MONGODB_SERVER")
+	log.Printf("Connecting to mongo server (%s)", mongodb_server)
 	info := &mgo.DialInfo{
 		Addrs:    []string{mongodb_server},
 		Database: mongoAuthenticationDb,
@@ -242,5 +245,29 @@ func productStatusHandler(formatter *render.Render) http.HandlerFunc {
     -- Products Delete Documents
 
     db.products.remove({})
+
+    -- Run the products api locally
+    MONGODB_SERVER="localhost:32769" ./goapi.exe
+
+    db.createUser(
+    {
+      user: "admin",
+      pwd: "cmpe281",
+      roles: [
+      	{ role: "root", db: "admin" },
+      	              { role: "userAdminAnyDatabase", db: "admin" },
+                  { role: "readWriteAnyDatabase", db: "admin" },
+                  { role: "dbAdminAnyDatabase", db: "admin" },
+                  { role: "clusterAdmin", db: "admin" }
+      ]
+      }
+     )
+    
+    curl localhost:3000/products/5c09a7b21b905f4efe8af226
+    curl localhost:3000/products
+    curl localhost:3000/ping
+    curl -XPUT -d '{"_id":"5c09a7b21b905f4efe8af226", "count":999}' localhost:3000/products/5c09a7b21b905f4efe8af226
+    docker build -t lakshmimaduri/starbucks-products-goapi .
+
 
 */
