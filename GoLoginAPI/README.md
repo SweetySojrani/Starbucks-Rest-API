@@ -10,12 +10,12 @@ mongo
 use cmpe281
 db.createCollection("cmpe281")
 
-db.cmpe281.insert( { "user_id":1, "name":"oliver", "password":"123" })
-db.cmpe281.insert( { "user_id":2, "name":"harry", "password":"456" })
-db.cmpe281.insert( { "user_id":3, "name":"emma", "password":"789" })
-db.cmpe281.insert( { "user_id":4, "name":"sophia", "password":"124" })
-db.cmpe281.insert( { "user_id":5, "name":"jack", "password":"125" })
-db.cmpe281.insert( { "user_id":1, "name":"oliver1", "password":"a123" })
+db.cmpe281.insert( { "name":"oliver", "password":"123" })
+db.cmpe281.insert( { "name":"harry", "password":"456" })
+db.cmpe281.insert( { "name":"emma", "password":"789" })
+db.cmpe281.insert( { "name":"sophia", "password":"124" })
+db.cmpe281.insert( { "name":"jack", "password":"125" })
+db.cmpe281.insert( { "name":"oliver1", "password":"a123" })
 ```
 
 
@@ -42,14 +42,14 @@ db.cmpe281.insert( { "user_id":1, "name":"oliver1", "password":"a123" })
 
 
  
-    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://54.176.179.159:3000/login-d "name=oliver4" -d "password=123"
+    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://192.168.137.203:3000/login-d "name=oliver4" -d "password=123"
     {
     "_id": "5c084a235e23ff7d7104b9e6",
     "name": "oliver4",
     "password": "123"
     }
     
-    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://54.176.179.159:3000/login -d "name=oliver5" -d "password=123"
+    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://192.168.137.203:3000/login -d "name=oliver5" -d "password=123"
     {
     "error": "Not found Name"
     }

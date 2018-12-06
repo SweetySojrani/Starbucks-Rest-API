@@ -34,8 +34,8 @@ func NewServer() *negroni.Negroni {
 // API Routes
 func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.HandleFunc("/ping", pingHandler(formatter)).Methods("GET")
-	mx.HandleFunc("/login", gumballLoginHandler(formatter)).Methods("POST")     
-	mx.HandleFunc("/signup", gumballSignupHandler(formatter)).Methods("POST") 
+	mx.HandleFunc("/login", starbucksLoginHandler(formatter)).Methods("POST")     
+	mx.HandleFunc("/signup", starbucksSignupHandler(formatter)).Methods("POST") 
 }
 
 
@@ -55,7 +55,7 @@ func pingHandler(formatter *render.Render) http.HandlerFunc {
 }
 
 //hnote: API create new users
-func gumballSignupHandler(formatter *render.Render) http.HandlerFunc {
+func starbucksSignupHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
  
        var result bson.M
@@ -114,7 +114,7 @@ func gumballSignupHandler(formatter *render.Render) http.HandlerFunc {
 
 
 //hnote: API login post check user name and password
-func gumballLoginHandler(formatter *render.Render) http.HandlerFunc {
+func starbucksLoginHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 
  
