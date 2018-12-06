@@ -17,7 +17,7 @@ import (
 )
 
 // MongoDB Config
-var mongodb_server = "XXX"
+var mongodb_server = "52.53.128.22:27017"
 var mongodb_database = "starbucks"
 var mongodb_collection = "starbucks"
 
@@ -36,8 +36,8 @@ func NewServer() *negroni.Negroni {
 // API Routes
 func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.HandleFunc("/ping", pingHandler(formatter)).Methods("GET")
-    mx.HandleFunc("/payment/{id}", starbucksPaymentHandler(formatter)).Methods("POST")
-	mx.HandleFunc("/payment/{userid}/{orderid}/{amt}/{orderstatus}", starbucksNewOrderHandler(formatter)).Methods("POST")
+    mx.HandleFunc("/payment/{orderid}", starbucksPaymentHandler(formatter)).Methods("POST")
+	mx.HandleFunc("/payment/{userid}/{orderid}/{amt}", starbucksNewOrderHandler(formatter)).Methods("POST")
 //	mx.HandleFunc("/paymentInfo/{id}/{cardnumber}/{Date}/{CVV}", starbucksPaymentValidateHandler(formatter)).Methods("GET")
 }
 
@@ -59,31 +59,31 @@ func pingHandler(formatter *render.Render) http.HandlerFunc {
 func starbucksPaymentHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		params := mux.Vars(req)
-		var uuid string = params["id"]
+		var uuid string = params["orderid"]
 		fmt.Println( "Order ID: ", uuid )
 
 		// Open MongoDB Session
 		// Open MongoDB Session
 		session, err := mgo.Dial(mongodb_server)
-        if err != nil {
-                panic(err)
-        }
-        defer session.Close()
-        session.SetMode(mgo.Monotonic, true)
-        c := session.DB(mongodb_database).C(mongodb_collection)
+		if err != nil {
+			panic(err)
+		}
+		defer session.Close()
+		session.SetMode(mgo.Monotonic, true)
+		c := session.DB(mongodb_database).C(mongodb_collection)
 
       //Get Starbucks Order
         var result starbucks
         //err = c.Find(bson.M{"name": "Ale"}).Select(bson.M{"phone": 0}).One(&result)
-        err = c.Find(bson.M{"OrderId" : uuid}).One(&result)
+        err = c.Find(bson.M{"orderid" : uuid}).One(&result)
         if err != nil {
                 log.Fatal(err)
                 fmt.Println( "Order not found: ", uuid)
         } else{
 			fmt.Println( "Order found: ", uuid)
 			// Update Starbucks Order Status
-			query := bson.M{"OrderId" : uuid}
-		    change := bson.M{"$set": bson.M{"OrderStatus" : "Order Paid"}}
+			query := bson.M{"orderid" : uuid}
+		    change := bson.M{"$set": bson.M{"orderstatus" : "Order Paid"}}
 		    err = c.Update(query, change)
 		    if err != nil {
 		                log.Fatal(err)
@@ -128,28 +128,29 @@ func starbucksNewOrderHandler(formatter *render.Render) http.HandlerFunc {
 		var orderid string = params["orderid"]
 		fmt.Println( "Order ID: ", orderid )
 
-		var orderstatus string = params["orderstatus"]
-		fmt.Println( "Order Status: ", orderstatus )
+		//var orderstatus string = params["orderstatus"]
+		//fmt.Println( "Order Status: ", orderstatus )
+
+		var orderstatus string = "Order Placed"
 
 		var amt string = params["amt"]
 		fmt.Println("Order amount:", amt)
 
 
 		// Open MongoDB Session
-		info := &mgo.DialInfo{
-        Addrs:    []string{"XXX"},
-        Database: "starbucks",
+		//info := &mgo.DialInfo{
+        //Addrs:    []string{"52.53.128.22:27017"},
+        //Database: "starbucks",
         //Username: "admin",
         //Password: "cmpe281",
-      }
-		session, err := mgo.DialWithInfo(info)
-        if err != nil {
-                panic(err)
-        }
-        defer session.Close()
-        session.SetMode(mgo.Monotonic, true)
-        c := session.DB(mongodb_database).C(mongodb_collection)
-
+	    //}
+		session, err := mgo.Dial(mongodb_server)
+		if err != nil {
+			panic(err)
+		}
+		defer session.Close()
+		session.SetMode(mgo.Monotonic, true)
+		c := session.DB(mongodb_database).C(mongodb_collection)
         err = c.Insert(&starbucks{UserId : uuid, OrderId : orderid, OrderAmount: amt, OrderStatus : orderstatus})
           if err != nil {
                 log.Fatal(err)
