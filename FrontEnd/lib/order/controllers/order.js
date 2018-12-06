@@ -8,10 +8,12 @@ exports.createOrder = function(req, res) {
 	console.log("going to create order");
 	console.log(req.session.cart);
 
+
+
 	var orderId;
-	var userId;
-	//var url = "52.52.214.192:3000";
-	var url = "http://localhost:3000/user/234/order";
+	var userId = req.session.id;
+	var url = "http://52.52.214.192:3000/user/" + userId + "/order";;
+	//var url = "http://localhost:3000/user/" + userId + "/order";
 
 	axios.post(url, {
 		Items: req.session.cart.items
@@ -41,10 +43,11 @@ exports.createOrder = function(req, res) {
 
 exports.getOrderStatus = function(req, res) {
 	var orderId = req.query.id;
-	var userId;
+	var userId = req.session.id;;
 	var orderData;
 
-	var url = "http://localhost:3000/user/234/order/" + orderId;
+	var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
+//	var url = "http://localhost:3000/user/" + userId + "/order/" + orderId;
 
 	var context = {
 	    siteTitle: "My Orders"
@@ -66,10 +69,10 @@ exports.getOrderStatus = function(req, res) {
 exports.completeOrder = function(req, res){
 
 	 var orderId = req.query.order_id;
-	 var userId;
-	 var orderStatus;
-
-	 var url = "http://localhost:3000/user/234/order/" + orderId;
+	 var userId = req.session.id;
+	 
+	 var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
+//	 var url = "http://localhost:3000/user/" + userId + "/order/" + orderId;
 
 	 axios.post(url).then(function (response) {
 		console.log(response);
@@ -89,32 +92,16 @@ exports.completeOrder = function(req, res){
 
 exports.orders = function(req, res) {
 
-	var userId;
-	var url = "http://localhost:3000/user/234/orders";
-	let ordersData = [];
+	var userId = req.session.id;
+	
+	var url = "http://52.52.214.192:3000/user/" + userId + "/orders";
+	//var url = "http://localhost:3000/user/" + userId + "/orders";
+	var ordersData;
 
 	var context = {
 	    siteTitle: "My Orders"
 	  ,pageDescr: "My Orders History"
 	};
-/*
-	context.ordersData = [{Items: {name: "coffee1", price: 4.0},
-    OrderId: '3af3b098-058a-4fd8-9f5d-3365c77a5b4d',
-    OrderStatus: 'Order Created',
-    UserId: '123',
-    _id: '5c060f5cdb15e00105af68cc'}, {
-    Items: {name: "coffee2", price: 3.0},
-    OrderId: '0cd71df4-f6d6-4596-94c9-89174a77f99e',
-    OrderStatus: 'Order Created',
-    UserId: '123',
-    _id: '5c06101adb15e00105af68d3'
-    }, {
-    Items: {name: "coffee3", price: 3.0},
-    OrderId: '8d1b6ba7-9220-40b5-89c3-f6680870dbca',
-    OrderStatus: 'Order Created',
-    UserId: '123',
-    _id: '5c06101adb15e00105af68d3'
-    }];*/
 
 	axios.get(url).then(function (response){
 		//console.log(response);
@@ -126,7 +113,6 @@ exports.orders = function(req, res) {
 		console.log(error);
 	});
 
-//	document.getElementById("target-id").innerHTML = context.ordersData;
 
 	var template = __dirname + '/../views/orders';
 //	res.render(template, context);
@@ -170,7 +156,9 @@ exports.addToCart = function(req, res) {
 		name: req.body.product_name,
 		image_url: req.body.product_image,
 		description: req.body.product_description,
-		price: req.body.product_price
+		price: req.body.product_price,
+		quantity: 1,
+		size: "Grande"
 	};
 
 	req.session.cart.items.push(product);
