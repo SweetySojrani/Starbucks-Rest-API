@@ -12,7 +12,7 @@ exports.createOrder = function(req, res) {
 
 	var orderId;
 	var userId = req.session.id;
-	var url = "52.52.214.192:3000/user/" + userId + "/order";;
+	var url = "http://52.52.214.192:3000/user/" + userId + "/order";;
 	//var url = "http://localhost:3000/user/" + userId + "/order";
 
 	axios.post(url, {
