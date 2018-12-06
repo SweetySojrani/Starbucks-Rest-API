@@ -42,14 +42,14 @@ db.cmpe281.insert( { "user_id":1, "name":"oliver1", "password":"a123" })
 
 
  
-    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://192.168.137.203:3000/login-d "name=oliver4" -d "password=123"
+    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://54.176.179.159:3000/login-d "name=oliver4" -d "password=123"
     {
     "_id": "5c084a235e23ff7d7104b9e6",
     "name": "oliver4",
     "password": "123"
     }
     
-    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://192.168.137.203:3000/login -d "name=oliver5" -d "password=123"
+    curl -H "Content-Type: application/x-www-form-urlencoded" -X POST http://54.176.179.159:3000/login -d "name=oliver5" -d "password=123"
     {
     "error": "Not found Name"
     }
