@@ -35,7 +35,7 @@ exports.loginSubmit = function(req, res) {
 	  });
 
 	  var options = {
-	    hostname: '52.8.1.184',
+	    hostname: '54.176.179.159',
 	    port: 3000,
 	    path: '/login',
 	    method: 'POST',
@@ -63,25 +63,89 @@ exports.loginSubmit = function(req, res) {
 		     //console.log(name);
 		     //console.log(password);
 		    
-			 if (data.length>3) { 
-				//login success
-				 res.redirect('/mycards')
-			  } else {
-				 res.redirect('/login?error=Invalid User Name and Password');
+		     var jdata=JSON.parse(data);
+		     if(jdata.hasOwnProperty('error')){
+		    	 res.redirect('/login?error='+jdata.error);
+		     }
+             else {
+            	 var sessData = req.session;
+            	  sessData.id=jdata._id
+            	  sessData.name = jdata.name;
+            	  console.log(sessData.id);
+            	  console.log(sessData.name);
+            	 res.redirect('/mycards');
 			  }
-		    
 		  });
-
 	  });
-
 	  req2.on('error', (e) => {
 	    console.error(e);
 	  }); 
-	  
 	  req2.write(postData);
 	  //req2.end();	  
-	  
 	};
 
+	
+	exports.signupSubmit = function(req, res) {
 
+		const http = require('http');
+		const querystring = require('querystring'); 
+
+		//req - the nodejs request from UI
+		var name=req.body.username;
+		var password=req.body.password; 
+		  
+		var postData = querystring.stringify({
+		      'name' : name,
+		      'password' : password
+		  });
+
+		  var options = {
+		    hostname: '192.168.137.203',
+		    port: 3000,
+		    path: '/signup',
+		    method: 'POST',
+		    headers: {
+		         'Content-Type': 'application/x-www-form-urlencoded',
+		         'Content-Length': postData.length
+		       }
+		  };
+		  
+		  //data - the go api return data
+		  var data='';
+		  //req2 - the outgoing request to go api 
+		  var req2 = http.request(options, (res2) => {
+		    console.log('statusCode:', res2.statusCode);
+		    console.log('headers:', res2.headers);
+
+			  // A chunk of data has been recieved.
+			  res2.on('data', (chunk) => {
+			    data += chunk;
+			  });
+			  // The whole response has been received. Print out the result.
+			  res2.on('end', () => {
+				 console.log(data);
+			     console.log(data.length);
+			     //console.log(name);
+			     //console.log(password);
+			    
+			     var jdata=JSON.parse(data);
+			     if(jdata.hasOwnProperty('error')){
+			    	 res.redirect('/login?error='+jdata.error);
+			     } else {
+			    	 res.redirect('/login?error=Success!Please login with your new user id'); 
+			     }
+			    
+			  });
+
+		  });
+
+		  req2.on('error', (e) => {
+		    console.error(e);
+		  }); 
+		  
+		  req2.write(postData);
+		  //req2.end();	  
+		  
+		};	
+	
 

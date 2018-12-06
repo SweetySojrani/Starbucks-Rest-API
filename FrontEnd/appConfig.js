@@ -4,10 +4,36 @@ exports.setup = function(runningApp, callback) {
   // Nothing ever comes from "x-powered-by", but a security hole
   runningApp.disable("x-powered-by");
 
+  var session= require('express-session');
+  var sa=session({
+  	  cookieName: 'session',
+  	  secret: 'eb[isfd-8yF9-7w2315df{}+Ijsli;;to8',
+  	  duration: 30 * 60 * 1000,
+  	  activeDuration: 5 * 60 * 1000,
+  	  httpOnly: true,
+  	  secure: true,
+  	  ephemeral: true,
+  	  resave: true,
+  	  saveUninitialized: true
+  });
+  runningApp.use(sa);
+  
   // Choose your favorite view engine(s)
   runningApp.set('view engine', 'handlebars');
-  runningApp.engine('handlebars', require('hbs').__express);
+  
+  var handlbars = require('hbs');
+  handlbars.registerHelper("sessionN", function(input){
+  	  //console.log('test registerHelper');
+  	  //return "hello"; //session.get("name");
+	  console.log(sa.name);
+	  return sa.name;
+  	});
 
+  
+  runningApp.engine('handlebars', handlbars.__express);//  require('hbs').__express);
+
+
+  
   //// you could use two view engines in parallel (if you are brave):
   // runningApp.set('view engine', 'j2');
   // runningApp.engine('j2', require('swig').renderFile);

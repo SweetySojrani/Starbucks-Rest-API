@@ -22,4 +22,4 @@ router.models       = require('./models');
 
 router.get('/', router.callbacks.loginForm);
 router.post('/', router.callbacks.loginSubmit);
-
+router.post('/signup', router.callbacks.signupSubmit);

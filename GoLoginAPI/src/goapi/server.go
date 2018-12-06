@@ -14,7 +14,7 @@ import (
 )
 
 // MongoDB Config
-var mongodb_server = "10.0.2.234"
+var mongodb_server = "54.176.179.159"
 var mongodb_database = "cmpe281"
 var mongodb_collection = "gumball"
 
@@ -47,6 +47,7 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.HandleFunc("/order", gumballOrderStatusHandler(formatter)).Methods("GET")
 	mx.HandleFunc("/orders", gumballProcessOrdersHandler(formatter)).Methods("POST")
 	mx.HandleFunc("/login", gumballLoginHandler(formatter)).Methods("POST")     
+	mx.HandleFunc("/signup", gumballSignupHandler(formatter)).Methods("POST") 
 }
 
 
@@ -114,18 +115,70 @@ func gumballUpdateHandler(formatter *render.Render) http.HandlerFunc {
 	}
 }
 
+//hnote: API create new users
+func gumballSignupHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+ 
+       var result bson.M
+
+
+	err := req.ParseForm()
+	if err != nil {
+		panic(err)
+	}
+	 
+	password:= req.Form.Get("password")
+	name := req.Form.Get("name")
+       if (len(password)<3) || (len(name)<3) {
+		formatter.JSON(w, http.StatusOK, bson.M{"error": "length of password and name must larger than 2!"})
+		return
+	}
+
+      fmt.Println("New User Name:", name )
+      fmt.Println("New User password:", password)
+
+	session, err := mgo.Dial(mongodb_server)
+        if err != nil {
+		  formatter.JSON(w, http.StatusOK, bson.M{"error": "System DB Error"})
+                panic(err)
+		  return
+        }
+        defer session.Close()
+        session.SetMode(mgo.Monotonic, true)
+        c := session.DB(mongodb_database).C("cmpe281")
+
+	err = c.Find(bson.M{"name": name , "password":password}).One(&result)  //Select(bson.M{"name": 0})
+	if err != nil {
+		//panic(err)
+              fmt.Println("Not found Name,ok to signup")
+
+		//try insert new user
+         
+         newId := bson.NewObjectId()
+	  toInsert :=bson.M{"_id": newId,"name": name , "password": password}
+	  if err := c.Insert(toInsert); err != nil {
+                 fmt.Println("Insert error")
+		   panic(err)
+		   formatter.JSON(w, http.StatusOK, bson.M{"error": "System Insert Error"})
+		} else {
+			formatter.JSON(w, http.StatusOK, toInsert)
+              }
+	
+	} else {
+	 
+		fmt.Println("found Name:", result["name"])
+
+	       formatter.JSON(w, http.StatusOK, bson.M{"error": "Name Already Existed"})
+       }
+   }
+}
+
+
 //hnote: API login post check user name and password
 func gumballLoginHandler(formatter *render.Render) http.HandlerFunc {
-	
-	
 	return func(w http.ResponseWriter, req *http.Request) {
 
-//       type Person struct {
-//	user_id   int
-//	name      string
-//	password     string
-//}
-       //result := Person{}
+ 
        var result bson.M
 
 
@@ -153,13 +206,13 @@ func gumballLoginHandler(formatter *render.Render) http.HandlerFunc {
 		//panic(err)
            fmt.Println("Not found Name")
 
-              formatter.JSON(w, http.StatusOK, "")
+              formatter.JSON(w, http.StatusOK, bson.M{"error": "Not found Name"})
 	
 	} else {
 	 
-		fmt.Println("found Name:", result["password"])
+		fmt.Println("found Name:", result["name"])
 	 	 
-	    formatter.JSON(w, http.StatusOK, result["password"])
+	    formatter.JSON(w, http.StatusOK, result)
        }
    }
 }
