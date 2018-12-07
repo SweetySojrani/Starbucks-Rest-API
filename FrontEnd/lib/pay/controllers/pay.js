@@ -10,7 +10,7 @@ exports.createOrder = function(req, res) {
 
 	var context = {
 		siteTitle: "My Order"
-		,pageDescr: "Order Check Out"
+		,pageDescr: "Payment Information"
 		
 	};
 

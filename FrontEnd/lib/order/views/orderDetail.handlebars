@@ -3,13 +3,13 @@
     <div class="center-text">
       <h4>Order Id: {{ orderData.OrderId }}</h4>
       <p>Order Status: {{orderData.OrderStatus}}</p>
-      <p>Item Ordered:  </br>
+      <p>Item Ordered:  
       {{#each items}}
             &nbsp&nbsp&nbsp&nbsp    Name: {{items.name}}, </br>
             &nbsp&nbsp&nbsp&nbsp    Price: ${{items.price}}, </br>
             &nbsp&nbsp&nbsp&nbsp    Quantity: {{items.quantity}}, </br>
             &nbsp&nbsp&nbsp&nbsp    Size: {{items.size}}</br></p>
-      <br/>
+      
       {{/each}}
     </div>
 </div>

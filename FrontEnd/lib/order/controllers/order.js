@@ -35,10 +35,7 @@ exports.createOrder = function(req, res) {
 		console.log(error);
 	});
 
-	
-
-	  var template = __dirname + '/../views/checkout';
-	  
+	  var template = __dirname + '/../views/checkout';	  
  
 };
 
@@ -62,7 +59,7 @@ exports.getOrderStatus = function(req, res) {
 		console.log("order detial");
 	//	console.log(response.data);
 		context.orderData = response.data;
-		context.items = orderData.Items;
+		context.items = response.data.Items;
 		console.log("items:");
 		console.log(context.items);
 		res.render(template, context);
@@ -78,18 +75,28 @@ exports.completeOrder = function(req, res){
 
 	 var orderId = req.body.order_id;
 	 var userId = req.session.userid;
+	 var responseData;
 
+	 console.log("order ID in completeOrder function")
 	 console.log(orderId);
 	 console.log(userId);
+
+	 var context = {
+	    siteTitle: "My Orders"
+	  ,pageDescr: "My Orders"
+	};
 //	 var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order/" + orderId;
 //	 var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
 	 var url = "http://35.188.130.38:80/order/user/" + userId + "/order/" + orderId;
 
 	 axios.post(url).then(function (response) {
-		console.log(response);
+		console.log(response.data);
+		context.responseData = response.data;
+		res.render(template, context);
 		//orderId = response.data.OrderId;
 	}).catch(function (error) {
 		console.log(error);
+
 	});
 
 	req.session.cart = {
@@ -98,6 +105,7 @@ exports.completeOrder = function(req, res){
 		formattedTotals: ''
 	};
 
+	var template = __dirname + '/../views/order';
 
 }
 
