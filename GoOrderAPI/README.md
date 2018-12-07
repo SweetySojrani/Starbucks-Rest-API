@@ -59,5 +59,6 @@ Get orders history
       -d '{"UserId": "123"}'
 ```
 
-Architecture
+###Architecture
 
+![Order Deployment Diagram](/Users/Vera/Desktop/Order Deployment Diagram.png)
