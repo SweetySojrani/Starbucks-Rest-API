@@ -2,6 +2,7 @@ var exports = module.exports;
 
 var greeter = require("../models/greeter");
 var axios = require("axios");
+var ip = "13.52.75.128";
 
 exports.products = function(req, res) {
   var name = req.query.name || "";
@@ -22,7 +23,7 @@ exports.products = function(req, res) {
     // ]
   };
 
-  axios.get("http://54.219.171.16:3000/products").then(function(productsData) {
+  axios.get(`http://${ip}:3000/products`).then(function(productsData) {
     context.productsData = productsData.data;
     console.log(productsData.data);
     res.render(template, context);
@@ -47,7 +48,7 @@ exports.product = function(req, res) {
   };
   let productId = req.query.id;
   axios
-    .get(`http://54.219.171.16:3000/products/${productId}`)
+    .get(`http://${ip}:3000/products/${productId}`)
     .then(function(productData) {
       context.productData = productData.data;
       console.log(productData.data);
