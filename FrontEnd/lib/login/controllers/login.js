@@ -2,6 +2,8 @@ var exports = module.exports;
 
 var greeter   = require('../models/greeter');
 
+var apihostname = '35.188.130.38';
+var apiport = '80';
 
 exports.logoff = function(req, res) {
 	
@@ -59,8 +61,8 @@ exports.loginSubmit = function(req, res) {
 	  });
 
 	  var options = {
-	    hostname: '54.176.179.159',
-	    port: 3000,
+	    hostname: apihostname,
+	    port: apiport,
 	    path: '/login',
 	    method: 'POST',
 	    headers: {
@@ -129,8 +131,8 @@ exports.loginSubmit = function(req, res) {
 		  });
 
 		  var options = {
-		    hostname: '54.176.179.159',
-		    port: 3000,
+		    hostname: apihostname,
+		    port: apiport,
 		    path: '/signup',
 		    method: 'POST',
 		    headers: {

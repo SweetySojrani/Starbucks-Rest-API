@@ -14,7 +14,9 @@ exports.setup = function(runningApp, callback) {
   	  secure: true,
   	  ephemeral: true,
   	  resave: true,
-  	  saveUninitialized: true
+  	  saveUninitialized: true,
+  	  kongServer: '35.188.130.38',
+  	  kongPort: '80'
   });
   runningApp.use(sa);
   

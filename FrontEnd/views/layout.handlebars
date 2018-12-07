@@ -31,13 +31,12 @@
 	            <li class="nav"><a href=".">Tea</a> </li>
 	            <li class="nav"><a href=".">Menu</a> </li>
 	            <li class="nav"><a href="/order/cart">Cart</a> </li>
-	            <li class="nav"><a href="/login">Login</a> </li>
 
 
 				<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
-                        <strong>{{sessionN}}</strong>
+                        <strong>Welcome {{#sessionN 0}}{{/sessionN}}</strong>
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -50,7 +49,7 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-8">
-                                        <p class="text-left text-primary  bg-dark font-weight-bold">Hi,<strong>{{#sessionN 0}}{{/sessionN}}</strong></p>
+                                        <p class="text-left text-primary  bg-dark font-weight-bold"></p>
                                     </div>
                                 </div>
                             </div>
