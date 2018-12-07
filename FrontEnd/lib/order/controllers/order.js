@@ -60,8 +60,9 @@ exports.getOrderStatus = function(req, res) {
 		console.log("order detial");
 	//	console.log(response.data);
 		context.orderData = response.data;
+		context.items = orderData.Items;
 		console.log("items:");
-		console.log(context.orderData.Items);
+		console.log(context.items);
 		res.render(template, context);
 	}).catch(function (error) {
 		console.log(error);
