@@ -1,29 +1,86 @@
 var exports = module.exports;
 
 var greeter   = require('../models/greeter');
+const axios = require('axios');
 
-exports.pay = function(req, res) {
+exports.createOrder = function(req, res) {
 
-	  var name = req.query.name || "";
-	  var prices=[3.99,4.99,5.99,7.99];
-	  var Descrs=["Espresso shots are topped with hot water to produce a light layer of crema. The result is this wonderfully rich cup with depth and nuance. Pro tip: for additional caffeine, ask your barista to try this with an extra shot (75 mg caffeine per shot)."
-		  ,"A Christmas classic since 1984 Festive, full-bodied and spicy with the addition of rare aged Sumatran coffee, our favorite tradition is finally here. Grab a bag of Starbucks® Christmas Blend Vintage 2018 before we’re all out!"
-		  ,"Subtle with delicate nuances of soft cocoa and lightly toasted nuts, plus 2X the caffeine*."
-		  ,"Mellow & Soft Subtle with delicate nuances of soft cocoa and lightly toasted nuts."
-	  ];
-	  var products=["Caffe Americano","White Hot Chocolate","Cinnamon Dolce Latte","Starbucks Reserve Latte"]
+	console.log("Placing the order");
+	console.log(req.session.cart);
 
-	  var context = {
-	    siteTitle: "Enjoy It"
-	  ,pageDescr: "Enjoy Your Drink"
-      ,productId: req.query.id
-      ,description: Descrs[req.query.id-1]
-	  ,product: products[req.query.id-1]
-	  ,price: prices[req.query.id-1]
-	  };
+	var context = {
+		siteTitle: "My Order"
+		,pageDescr: "Order Check Out"
+		
+	};
+
+	var orderId = req.session.cart.orderId;
+	var userId = req.session.id;
+	console.log(orderId);
+	var amt = req.session.cart.totals;
+	var url = "http://18.144.44.79:5000/payment/" + userId + "/" + orderId + "/" + amt;
+
+    axios.post(url, {
+		Items: req.session.cart.items
+	}).then(function (response) {
+	//	console.log(response);
+		console.log(response.data);
+		req.session.cart.orderId = orderId;
+		 res.render(template, context);
+		console.log("orderID:" + orderId);
+	}).catch(function (error) {
+		console.log(error);
+	});
+
+	
 
 	  var template = __dirname + '/../views/pay';
-	  res.render(template, context);
+	 
+
+    console.log("Order Placed in Payment");
  
-	};
+};
+
+
+exports.OrderPayment = function(req, res){
+
+	 var orderId = req.session.cart.orderId;
+	 var userId = req.session.id; 
+	 console.log("orderID in Payment:" + orderId);
+
+	 var urlpayment = "http://18.144.44.79:5000/payment/" + orderId;
+
+	 var urlorder = "http://localhost:5000/order?id=" + orderId;
+
+	 console.log("Payment url :" + urlpayment);
+     console.log("Order url :" + urlorder);
+
+
+	 axios.post(urlpayment).then(function (response) {
+		console.log(response);
+
+		var context = {
+		siteTitle: "My Order"
+		,pageDescr: "Order Payment"		
+	    };
+	    res.render(template, context);
+	}).catch(function (error) {
+		console.log(error);
+	});    
+
+		axios.post(urlorder).then(function (response) {
+		console.log(response);
+
+		var context = {
+		siteTitle: "My Order"
+		,pageDescr: "Order Completed"		
+	    };
+	   res.render(template, context);
+	}).catch(function (error) {
+		console.log(error);
+	}); 
+
+	 var template = __dirname + '/../views/complete';
+}
+
 

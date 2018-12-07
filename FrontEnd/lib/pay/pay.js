@@ -20,6 +20,8 @@ router.models       = require('./models');
 
 // Module's Routes. Please note this is actually under /hello, because module is attached under /hello
 
-router.get('/', router.callbacks.pay);
+router.get('/id/', router.callbacks.createOrder);
+router.get('/', router.callbacks.createOrder);
+router.post('/payment/', router.callbacks.OrderPayment);
 
 

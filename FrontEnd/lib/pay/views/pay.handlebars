@@ -1,17 +1,26 @@
-<div class="form-group">
-	<div class="row">
-		<div class="col-md-12 col-sm-12">
-		 <button type="button" class="btn btn-secondary" onclick="location.href='/products'">More Drinks</button>
-		</div>
-		<div class="col-md-2 col-sm-12">
-			<b><h3>{{product}}</h3></b>
-			<p class="text-muted">{{description}}</p>
-			<label> You already paid. Enjoy it. </label>
-			<br/>
-		</div>
-		<div class="col-md-2 col-sm-12" align="center">
-			<a href="#order"> <img src="/images/menu{{productId}}.png" width="400" /></a>
-		</div>
+<form id="pay" class="col-md-4 col-sm-12" method="post" action="/pay/payment">
+        <p class="text-warning">{{error}}</p>
+        <div class="form-group">
+        Card Number:<br>
+            <input type="text" class="form-control" name="Card Number" id="card Number" placeholder="card Number">
+        <br>
+        </div>
+        <div class="form-group">
+        Name on Card:<br>
+            <input type="Name on Card" class="form-control" name="name" id="name" placeholder="name">
+        <br>
+        </div>
+        <div class="form-group">
+        Date Valid:<br>
+            <input type="Valid Date" class="form-control" name="Date" id="MM/YY" placeholder="date">
+        <br>
+        </div>
+        <div class="form-group">
+        CVV:<br>
+            <input type="CVV" class="form-control" name="cvv" id="name" placeholder="cvv">
+        <br>
+        </div>
+       <button type="submit" class="btn btn-success btn-lg"  onclick="location.href='/pay/payment?id={{orderId}}'">&nbsp;&nbsp;&nbsp;submit&nbsp;&nbsp;
+       </button>
 
-	</div>
-</div>
+    </form>
