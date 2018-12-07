@@ -4,11 +4,13 @@
       <h4>Order Id: {{ orderData.OrderId }}</h4>
       <p>Order Status: {{orderData.OrderStatus}}</p>
       <p>Item Ordered:  </br>
+      {{#each orderData.Items}}
             &nbsp&nbsp&nbsp&nbsp    Name: {{orderData.Items.name}}, </br>
             &nbsp&nbsp&nbsp&nbsp    Price: ${{orderData.Items.price}}, </br>
             &nbsp&nbsp&nbsp&nbsp    Quantity: {{orderData.Items.quantity}}, </br>
             &nbsp&nbsp&nbsp&nbsp    Size: {{orderData.Items.size}}</br></p>
       <br/>
+      {{/each}}
     </div>
 </div>
 </div>
