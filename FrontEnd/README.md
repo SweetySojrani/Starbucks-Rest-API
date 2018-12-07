@@ -45,3 +45,27 @@ Install the Eclipse plugins
 
 8.  Go to browser to open http://localhost:3000/
 
+
+
+### Instruction - How to build the application as a container
+
+Build a container image. Upload to the docker hub .
+
+```
+docker build .
+docker login --username=qinyinghua --email=yinghua.qin@sjsu.edu
+
+docker images
+
+docker tag <image id here> qinyinghua/starbucksnodejs:0.1
+
+docker push qinyinghua/starbucksnodejs
+
+```
+
+Get the container image from docker hub and deploy. 
+
+```
+docker run --name starbucks -it qinyinghua/starbucksnodejs:0.1
+```
+
