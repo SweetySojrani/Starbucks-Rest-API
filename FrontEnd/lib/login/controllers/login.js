@@ -3,12 +3,10 @@ var exports = module.exports;
 var greeter   = require('../models/greeter');
 
 
-
-
 exports.logoff = function(req, res) {
 	
 	 var sessData = req.session;
-	  sessData.id='';
+	  sessData.userid='';
 	  sessData.name = '';
 	  req.app.set('sname', '');
       res.redirect('/');
@@ -94,10 +92,8 @@ exports.loginSubmit = function(req, res) {
 		    	 res.redirect('/login?error='+jdata.error);
 		     }
              else {
-
-            	 
             	 var sessData = req.session;
-            	  sessData.id=jdata._id
+            	  sessData.userid=jdata._id
             	  sessData.name = jdata.name;
             	  req.app.set('sname', sessData.name);  //hnote: store for hbs
             	  //console.log(sessData.name);

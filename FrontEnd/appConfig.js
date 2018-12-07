@@ -21,23 +21,30 @@ exports.setup = function(runningApp, callback) {
   // Choose your favorite view engine(s)
   runningApp.set('view engine', 'handlebars');
   
+
   var handlbars = require('hbs');
-  handlbars.registerHelper("sessionN", function(input){
-	  console.log(runningApp.get('sname'));
+  
+  
+  
+  handlbars.registerHelper("sessionN", function(x){
+	  if(x==0) {
+	  //console.log(runningApp.get('sname'));
 	  return runningApp.get('sname');
+	  } else if (x==1) {
+		  var sname=runningApp.get('sname');
+		  if (typeof sname !== 'undefined' && sname !== null && sname!=='') {
+			  //console.log("true");
+			  return true;
+		  }
+		  else {
+			  //console.log("false");
+			  return false;
+		  }		  
+	  }
+	  
   	});
   
-  handlbars.registerHelper("sessionNB", function(input){
-	  var sname=runningApp.get('sname');
-	  if (typeof sname !== 'undefined' && sname !== null && sname!=='') {
-		  console.log("true");
-		  return true;
-	  }
-	  else {
-		  console.log("false");
-		  return false;
-	  }
-  	});
+
   
   
   runningApp.engine('handlebars', handlbars.__express);//  require('hbs').__express);
