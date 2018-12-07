@@ -45,6 +45,8 @@ exports.createOrder = function(req, res) {
 exports.getOrderStatus = function(req, res) {
 	var orderId = req.query.id;
 	var userId = req.session.userid;
+	console.log("user ID:");
+	console.log(userId);
 	var orderData;
 
 //	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order/" + orderId;
@@ -74,7 +76,7 @@ exports.getOrderStatus = function(req, res) {
 
 exports.completeOrder = function(req, res){
 
-	 var orderId = req.body.orderId;
+	 var orderId = req.body.order_id;
 	 var userId = req.session.userid;
 
 	 console.log(orderId);

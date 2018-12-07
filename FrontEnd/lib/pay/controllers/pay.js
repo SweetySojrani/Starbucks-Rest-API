@@ -45,7 +45,7 @@ exports.createOrder = function(req, res) {
 exports.OrderPayment = function(req, res){
 
 	 var orderId = req.session.cart.orderId;
-	 var userId = req.session.id; 
+	 var userId = req.session.userid; 
 	 console.log("orderID in Payment:" + orderId);
 
 	 var urlpayment = "http://35.188.130.38:80/payment/" + orderId;
@@ -57,28 +57,33 @@ exports.OrderPayment = function(req, res){
 
 
 	 axios.post(urlpayment).then(function (response) {
-		console.log(response);
+		console.log("from orderpayment function")
+		console.log(response.data);
 
 		var context = {
 		siteTitle: "My Order"
-		,pageDescr: "Order Payment"		
+		,pageDescr: "Order Payment"	
+		,orderid: orderId	
 	    };
 	    res.render(template, context);
 	}).catch(function (error) {
 		console.log(error);
 	});    
 
-		axios.post(urlorder, {orderId: orderId}).then(function (response) {
-		console.log(response);
 
-		var context = {
-		siteTitle: "My Order"
-		,pageDescr: "Order Completed"		
-	    };
-	   res.render(template, context);
-	}).catch(function (error) {
-		console.log(error);
-	}); 
+	//console.log("User ID :" + userId);
+
+	// 	axios.post(urlorder, {orderId: orderId}).then(function (response) {
+	// 	console.log(response);
+
+	// 	var context = {
+	// 	siteTitle: "My Order"
+	// 	,pageDescr: "Order Completed"		
+	//     };
+	//    res.render(template, context);
+	// }).catch(function (error) {
+	// 	console.log(error);
+	// }); 
 
 	 var template = __dirname + '/../views/complete';
 }
