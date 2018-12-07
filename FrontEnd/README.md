@@ -68,6 +68,8 @@ docker push qinyinghua/starbucksnodejs
 Create the Kubernetes deployment, service, pod configuration YAML files.
 
 ```
-to be added
+kubectl create -f kubernetes-namespace.yaml
+kubectl create -f starbucks-deployment.yaml
+kubectl create -f starbucks-service.yaml
 ```
 
