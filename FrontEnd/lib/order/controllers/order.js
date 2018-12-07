@@ -8,13 +8,19 @@ exports.createOrder = function(req, res) {
 	console.log("going to create order");
 	console.log(req.session.cart);
 
-
-
 	var orderId;
-	var userId = req.session.id;
-	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order";
+	var userId = req.session.userid;
+//	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order";
+
+	var context = {
+		siteTitle: "My Order"
+		,pageDescr: "Order Check Out"
+		,productsData: req.session.cart.items,
+		orderId: orderId,
+		total: req.session.cart.totals.toFixed(2)
+	};
 //	var url = "http://52.52.214.192:3000/user/" + userId + "/order";
-	//var url = "http://localhost:3000/user/" + userId + "/order";
+	var url = "http://35.188.130.38:80/order/user/" + userId + "/order";
 
 	axios.post(url, {
 		Items: req.session.cart.items
@@ -24,32 +30,26 @@ exports.createOrder = function(req, res) {
 		orderId = response.data.OrderId;
 		req.session.cart.orderId = orderId;
 		console.log("orderID:" + orderId);
+		res.render(template, context);
 	}).catch(function (error) {
 		console.log(error);
 	});
 
-
-	var context = {
-		siteTitle: "My Order"
-		,pageDescr: "Order Check Out"
-		,productsData: req.session.cart.items,
-		orderId: orderId,
-		total: req.session.cart.totals.toFixed(2)
-	};
+	
 
 	  var template = __dirname + '/../views/checkout';
-	  res.render(template, context);
+	  
  
 };
 
 exports.getOrderStatus = function(req, res) {
 	var orderId = req.query.id;
-	var userId = req.session.id;;
+	var userId = req.session.userid;
 	var orderData;
 
-	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order/" + orderId;
+//	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order/" + orderId;
 //	var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
-//	var url = "http://localhost:3000/user/" + userId + "/order/" + orderId;
+	var url = "http://35.188.130.38:80/order/user/" + userId + "/order/" + orderId;
 
 	var context = {
 	    siteTitle: "My Orders"
@@ -57,8 +57,11 @@ exports.getOrderStatus = function(req, res) {
 	};
 
 	axios.get(url).then(function (response) {
-		console.log(response.data);
+		console.log("order detial");
+	//	console.log(response.data);
 		context.orderData = response.data;
+		console.log("items:");
+		console.log(context.orderData.Items);
 		res.render(template, context);
 	}).catch(function (error) {
 		console.log(error);
@@ -70,12 +73,12 @@ exports.getOrderStatus = function(req, res) {
 
 exports.completeOrder = function(req, res){
 
-	 var orderId = req.query.order_id;
-	 var userId = req.session.id;
+	 var orderId = req.query.id;
+	 var userId = req.session.userid;
 	 
-	 var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order/" + orderId;
+//	 var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order/" + orderId;
 //	 var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
-//	 var url = "http://localhost:3000/user/" + userId + "/order/" + orderId;
+	 var url = "http://35.188.130.38:80/order/user/" + userId + "/order/" + orderId;
 
 	 axios.post(url).then(function (response) {
 		console.log(response);
@@ -95,11 +98,11 @@ exports.completeOrder = function(req, res){
 
 exports.orders = function(req, res) {
 
-	var userId = req.session.id;
+	var userId = req.session.userid;
 	
-	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/orders";
+//	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/orders";
 	//var url = "http://52.52.214.192:3000/user/" + userId + "/orders";
-	//var url = "http://localhost:3000/user/" + userId + "/orders";
+	var url = "http://35.188.130.38:80/order/user/" + userId + "/orders";
 	var ordersData;
 
 	var context = {
@@ -160,14 +163,16 @@ exports.addToCart = function(req, res) {
 		name: req.body.product_name,
 		image_url: req.body.product_image,
 		description: req.body.product_description,
-		price: req.body.product_price
+		price: req.body.product_price,
+		quantity: 1,
+		size: "Grande"
 	};
 
 	req.session.cart.items.push(product);
 	req.session.cart.totals += parseFloat(product.price);
 
 	console.log("added new item to cart:");
-	console.log(req.session.id);
+	console.log(req.session.userid);
 	console.log(req.session.name);
 	console.log(req.session.cart);
 
