@@ -57,15 +57,17 @@ docker login --username=qinyinghua --email=yinghua.qin@sjsu.edu
 
 docker images
 
-docker tag <image id here> qinyinghua/starbucksnodejs:0.1
+docker tag cc8f3d662aa6 qinyinghua/starbucksnodejs:0.1
 
 docker push qinyinghua/starbucksnodejs
 
 ```
 
-Get the container image from docker hub and deploy. 
+### Get the container image and deploy to Kubernetes 
+
+Create the Kubernetes deployment, service, pod configuration YAML files.
 
 ```
-docker run --name starbucks -it qinyinghua/starbucksnodejs:0.1
+to be added
 ```
 
