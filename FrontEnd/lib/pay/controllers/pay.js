@@ -18,7 +18,7 @@ exports.createOrder = function(req, res) {
 	var userId = req.session.id;
 	console.log(orderId);
 	var amt = req.session.cart.totals;
-	var url = "http://18.144.44.79:5000/payment/" + userId + "/" + orderId + "/" + amt;
+	var url = "http://35.188.130.38:80/payment/" + userId + "/" + orderId + "/" + amt;
 
     axios.post(url, {
 		Items: req.session.cart.items
@@ -48,9 +48,9 @@ exports.OrderPayment = function(req, res){
 	 var userId = req.session.id; 
 	 console.log("orderID in Payment:" + orderId);
 
-	 var urlpayment = "http://18.144.44.79:5000/payment/" + orderId;
+	 var urlpayment = "http://35.188.130.38:80/payment/" + orderId;
 
-	 var urlorder = "http://localhost:5000/order?id=" + orderId;
+	 var urlorder = "http://localhost:4000/order/id";
 
 	 console.log("Payment url :" + urlpayment);
      console.log("Order url :" + urlorder);
@@ -68,7 +68,7 @@ exports.OrderPayment = function(req, res){
 		console.log(error);
 	});    
 
-		axios.post(urlorder).then(function (response) {
+		axios.post(urlorder, {orderId: orderId}).then(function (response) {
 		console.log(response);
 
 		var context = {

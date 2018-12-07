@@ -74,9 +74,11 @@ exports.getOrderStatus = function(req, res) {
 
 exports.completeOrder = function(req, res){
 
-	 var orderId = req.query.id;
+	 var orderId = req.body.orderId;
 	 var userId = req.session.userid;
-	 
+
+	 console.log(orderId);
+	 console.log(userId);
 //	 var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80/user/" + userId + "/order/" + orderId;
 //	 var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
 	 var url = "http://35.188.130.38:80/order/user/" + userId + "/order/" + orderId;
