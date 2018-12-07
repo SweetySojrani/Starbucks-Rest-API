@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: starbuck
+  namespace: starbuck
+  labels:
+    name: starbuck
+spec:
+  containers:
+  - name: starbuck
+    image: qinyinghua/starbucksnodejs
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 4000
+      name: http
+      protocol: TCP

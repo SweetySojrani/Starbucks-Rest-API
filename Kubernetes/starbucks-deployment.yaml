@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starbuck-deployment
+  namespace: starbuck
+spec:
+  selector:
+    matchLabels:
+      name: starbuck
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        name: starbuck
+    spec:
+      containers:
+      - name: starbuck
+        image: qinyinghua/starbucksnodejs
+        ports:
+        - containerPort: 4000
+
