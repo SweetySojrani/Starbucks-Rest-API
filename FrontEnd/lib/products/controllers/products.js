@@ -23,7 +23,7 @@ exports.products = function(req, res) {
     // ]
   };
 
-  axios.get(`http://${ip}:3000/products`).then(function(productsData) {
+  axios.get(`http://35.188.130.38:80/products`).then(function(productsData) {
     context.productsData = productsData.data;
     console.log(productsData.data);
     res.render(template, context);
@@ -48,7 +48,7 @@ exports.product = function(req, res) {
   };
   let productId = req.query.id;
   axios
-    .get(`http://${ip}:3000/products/${productId}`)
+    .get(`http://35.188.130.38:80/products/${productId}`)
     .then(function(productData) {
       context.productData = productData.data;
       console.log(productData.data);
