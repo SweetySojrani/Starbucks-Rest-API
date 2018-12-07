@@ -12,7 +12,8 @@ exports.createOrder = function(req, res) {
 
 	var orderId;
 	var userId = req.session.id;
-	var url = "http://52.52.214.192:3000/user/" + userId + "/order";;
+	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:3000/user/" + userId + "/order";
+//	var url = "http://52.52.214.192:3000/user/" + userId + "/order";
 	//var url = "http://localhost:3000/user/" + userId + "/order";
 
 	axios.post(url, {
@@ -46,7 +47,8 @@ exports.getOrderStatus = function(req, res) {
 	var userId = req.session.id;;
 	var orderData;
 
-	var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
+	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:3000/user/" + userId + "/order/" + orderId;
+//	var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
 //	var url = "http://localhost:3000/user/" + userId + "/order/" + orderId;
 
 	var context = {
@@ -71,7 +73,8 @@ exports.completeOrder = function(req, res){
 	 var orderId = req.query.order_id;
 	 var userId = req.session.id;
 	 
-	 var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
+	 var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:3000/user/" + userId + "/order/" + orderId;
+//	 var url = "http://52.52.214.192:3000/user/" + userId + "/order/" + orderId;
 //	 var url = "http://localhost:3000/user/" + userId + "/order/" + orderId;
 
 	 axios.post(url).then(function (response) {
@@ -94,7 +97,8 @@ exports.orders = function(req, res) {
 
 	var userId = req.session.id;
 	
-	var url = "http://52.52.214.192:3000/user/" + userId + "/orders";
+	var url = "http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:3000/user/" + userId + "/orders";
+	//var url = "http://52.52.214.192:3000/user/" + userId + "/orders";
 	//var url = "http://localhost:3000/user/" + userId + "/orders";
 	var ordersData;
 
