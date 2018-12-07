@@ -173,5 +173,4 @@ db.cmpe281.insert( { "name":"jack", "password":"125" })
 db.cmpe281.insert( { "name":"oliver1", "password":"a123" })
 
 
-
  */

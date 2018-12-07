@@ -61,7 +61,7 @@ exports.loginSubmit = function(req, res) {
 	  });
 
 	  var options = {
-	    hostname: '192.168.137.203',
+	    hostname: '54.176.179.159',
 	    port: 3000,
 	    path: '/login',
 	    method: 'POST',
@@ -101,7 +101,7 @@ exports.loginSubmit = function(req, res) {
             	  sessData.name = jdata.name;
             	  req.app.set('sname', sessData.name);  //hnote: store for hbs
             	  //console.log(sessData.name);
-            	 res.redirect('/mycards');
+            	 res.redirect('/order/history');
 			  }
 		    
 		  });
@@ -133,7 +133,7 @@ exports.loginSubmit = function(req, res) {
 		  });
 
 		  var options = {
-		    hostname: '192.168.137.203',
+		    hostname: '54.176.179.159',
 		    port: 3000,
 		    path: '/signup',
 		    method: 'POST',
