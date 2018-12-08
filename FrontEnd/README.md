@@ -89,5 +89,14 @@ $ cd cmpe281team
 $ git add .
 $ git commit -am "make it better"
 $ git push heroku master
+
+After that, found some issue of Heroku yaml file parsing. 
+Try to fix it by running: 
+
+npm install js-yaml
+
+
+
+
 ```
 
