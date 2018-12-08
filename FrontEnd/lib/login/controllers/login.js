@@ -2,7 +2,7 @@ var exports = module.exports;
 
 var greeter   = require('../models/greeter');
 
-var apihostname = '35.188.130.38';
+var apihostname = 'nodejs-627042659.us-west-1.elb.amazonaws.com';
 var apiport = '80';
 
 exports.logoff = function(req, res) {
