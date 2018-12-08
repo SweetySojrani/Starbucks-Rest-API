@@ -88,11 +88,13 @@ db.cmpe281.insert( { "name":"oliver1", "password":"a123" })
 
 ### Create Load Balancer
 
-![1544250593515](C:\Yinghua\SJSU\2018Fall\CMPE281\fa18-281-sky\GoLoginAPI\README.assets\1544250593515.png)
+![1544250593515](./README.assets/1544250593515.png)
 
 
+
+![1544251402430](./README.assets/1544251402430.png)
 
 ## Go API and backend database deployment diagram
 
-![1544077214655](C:/Yinghua/SJSU/2018Fall/CMPE281/fa18-281-sky/GoLoginAPI/README.assets/1544077214655.png)
+![1544251459883](./README.assets/1544251459883.png)
 
