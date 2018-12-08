@@ -18,7 +18,7 @@ RUN adduser -s /bin/false -u 7007 -D appuser \
 
 USER appuser
 
-EXPOSE 4000
+EXPOSE 3000
 
 ENV HOME_DIR=/opt/application \
     NODE_ENV=production \
