@@ -149,8 +149,10 @@
 
   - Implemented the sign up nodejs page
   - Implemented the go api for sing up
-
-
+ 
+#### AWS CloudFront and AWS S3 to store Product Catalog Images
+  - Implemented storage of images in AWS S3
+  - Created AWS CloudFront distribution which connects to AWS S3
 
 
 ## Create Product Catalog 
