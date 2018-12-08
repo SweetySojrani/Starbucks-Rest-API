@@ -19,6 +19,20 @@
 
 
 
+## Architecture
+
+![Architecture](./README.assets/Architecture.png)
+
+
+
+## Presentation
+
+CMPE Team Project Starbucks Online Store
+
+http://docs.google.com/presentation/d/11eUHup_X2sBACVZNBFcr6DTY0KV0J3dWST_6N2AovDk/edit?usp=sharing_eil&ts=5c0be778
+
+
+
 ## Front End UI Pages
 
 #### Home Page

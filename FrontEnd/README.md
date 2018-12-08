@@ -57,11 +57,11 @@ docker login --username=qinyinghua --email=yinghua.qin@sjsu.edu
 
 docker images
 
-docker tag cc8f3d662aa6 qinyinghua/starbucksnodejs:0.1
+docker tag d9550141ed3e qinyinghua/starbucksnodejs:0.2
 
 docker push qinyinghua/starbucksnodejs
 
-docker run -it -p 80:4000 -p 81:3000 --name starbucks qinyinghua/starbucksnodejs:0.1
+docker run -it -p 80:4000 -p 81:3000 --name starbucks qinyinghua/starbucksnodejs:0.2
 
 ```
 
@@ -94,7 +94,10 @@ After that, found some issue of Heroku yaml file parsing.
 Try to fix it by running: 
 
 npm install js-yaml
+npm install yaml
+npm install config
 
+node server.js
 
 
 
