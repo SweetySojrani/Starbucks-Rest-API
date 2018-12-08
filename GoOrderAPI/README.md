@@ -61,4 +61,4 @@ Get orders history
 
 ###Architecture
 
-![Order Deployment Diagram](/Users/Vera/Desktop/Order Deployment Diagram.png)
+![Order Deployment Diagram](./diagram/Diagram.png)
