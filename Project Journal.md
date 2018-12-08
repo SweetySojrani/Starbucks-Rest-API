@@ -331,3 +331,61 @@ https://console.cloud.google.com/marketplace/details/kong/kong
 9. Deploy in default namespace
 
 ![GoogleCloudKongDeploy](./README.assets/GoogleCloudKongDeploy.PNG) 
+
+## Configuring Kong
+A Kong gateway redirects http requests to an upstream url (typically Kong listens for requests on port 8000). Conveniently, Kong can be configured via HTTP requests on a different port (typically 8001). This allows for security by controlling traffic to the admin port. 
+
+### Add API to Kong
+```
+curl -X POST http://<kong-ip>:<kong-admin-port>/apis \
+  --data name='test' \
+  --data upstream_url='http://url.com' \
+  --data uris='/example'
+ ````
+This adds API named 'test' to Kong. A get to
+  http://<kong-ip>:<kong-consumer-port>/example redirects to http://url.com
+Similarly, 
+  http://<kong-ip>:<kong-consumer-port>/example/extension redirects to http://url.com/extension
+
+
+### Adding API Example: Order
+```
+curl -X POST http://35.202.2.250:8001/apis --data name='order' --data upstream_url='http://orderAPI-elb-907723796.us-west-1.elb.amazonaws.com:80' --data uris='/order'
+```
+
+### Deleting an API
+```
+curl -X DELETE http://<kong-ip>:<kong-admin-port>/apis/<API-name>
+```
+
+### Add plugin to API
+```
+curl -X POST http://<kong-ip>:<kong-admin-port>/apis/<api-name> \
+  -- data "name=<plugin-name>"
+  -- data "config.data=<param>"
+```
+
+### Deleting plugin from API
+```
+curl -X DELETE http://<kong-ip>:<kong-admin-port>/apis/<api-name>/plugins/<plugin-name>
+```
+
+## Google Cloud Platform Deployment of NodeJS app as a service on Kubernetes
+
+1. Push Docker image to Docker hub
+2. Create a new cluster:
+  a. Via the GCP UI
+
+  b. The command line
+  ```
+  gcloud container clusters create nodejs-cluster --num-nodes=3 --zone-us-central1-a
+  ```
+3. Deploy from Docker Hub to Kubernetes as a service
+```
+kubectl run starbucksnodejs --image=qinyinghua/starbucksnodejs:0.2 --port 4000 --port 3000
+```
+
+4. Expose ports on Kubernetes
+```
+kubectl expose deployment starbucksnodejs --type=LoadBalancer --port 80 --target-port 4000 
+```
