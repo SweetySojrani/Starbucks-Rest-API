@@ -73,7 +73,7 @@ http://docs.google.com/presentation/d/11eUHup_X2sBACVZNBFcr6DTY0KV0J3dWST_6N2Aov
 
 #### Product List
 
-![1543559693654](./README.assets/1543559693654.png)
+![new_product_page](https://user-images.githubusercontent.com/42717746/49688607-9f225d00-fac9-11e8-9666-8d186dd78847.png)
 
 
 
