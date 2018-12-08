@@ -10,6 +10,10 @@ Steps Performed:
 - Perform a test run in postman this time with the IP address of GOAPI AWS instance instead of localhost
 - Once successfully tested, create the image of the GOAPI instance and create GOAPI2 instance from the image
 - Create Load Balancer for X-Axis scaling of the Microservice. 
+
+![load_balancer](https://user-images.githubusercontent.com/42895383/49684429-c278e800-fa88-11e8-85b8-7d77ed765f5f.png)
+
+
 - Test the Curl Commands in Postman with LoadBalancer now. 
 - Once the API is successfully tested with LoadBalancer, start building the frontend in node.js
 - Create the controller, pay.js in views and handelers and perform test on the payment pages.
