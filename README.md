@@ -1,4 +1,4 @@
-# Project Name: Starbucks Online Orders
+# \Project Name: Starbucks Online Orders
 
 The idea is to leverage the individual project implementation of the No-SQL databases for backend database and create a full stack of distributed web application which be able to scale out on all layers and be able have network partition tolerance. 
 
@@ -31,13 +31,13 @@ On the front-end layer, we use the nodejs.  It also connect to the Google Analyt
 
 In this version, we moved the frontend from Heroku to the Google Kubernetes service. 
 
-![1544325481327](./README.assets/1544325481327.png)
+![1544325481327](.\README.assets\1544325481327.png)
 
 ### Version #1 
 
 In this version, we use Heroku as the front end deployment. 
 
-![Architecture](./README.assets/Architecture.png)
+![Architecture](.\README.assets\Architecture.png)
 
 ## Micro Services
 
@@ -67,25 +67,25 @@ http://docs.google.com/presentation/d/11eUHup_X2sBACVZNBFcr6DTY0KV0J3dWST_6N2Aov
 
 #### Home Page
 
-![1543559881953](./README.assets/1543559881953.png)
+![1543559881953](.\README.assets\1543559881953.png)
 
 
 
 #### Login
 
-![1543559908292](./README.assets/1543559908292.png)
+![1543559908292](.\README.assets\1543559908292.png)
 
 
 
 #### Login Success - Show My Card Balance
 
-![1543559950618](./README.assets/1543559950618.png)
+![1543559950618](.\README.assets\1543559950618.png)
 
 
 
 #### Add Card
 
-![1543559651475](./README.assets/1543559651475.png)
+![1543559651475](.\README.assets\1543559651475.png)
 
 
 
@@ -97,13 +97,13 @@ http://docs.google.com/presentation/d/11eUHup_X2sBACVZNBFcr6DTY0KV0J3dWST_6N2Aov
 
 #### One Product - click "Pay Now" to pay
 
-![1543559744261](./README.assets/1543559744261.png)
+![1543559744261](.\README.assets\1543559744261.png)
 
 
 
 #### Paid
 
-![1543559794105](./README.assets/1543559794105.png)
+![1543559794105](.\README.assets\1543559794105.png)
 
 # Project Journal
 
@@ -162,7 +162,7 @@ http://docs.google.com/presentation/d/11eUHup_X2sBACVZNBFcr6DTY0KV0J3dWST_6N2Aov
     db.cmpe281.insert( { "user_id":1, "name":"oliver1", "password":"a123" })
     ```
 
-    ![](./README.assets/CreateDataCollection.jpg)		
+    ![](.\README.assets\CreateDataCollection.jpg)		
 
 
 
@@ -198,9 +198,9 @@ http://docs.google.com/presentation/d/11eUHup_X2sBACVZNBFcr6DTY0KV0J3dWST_6N2Aov
     -d "name=oliver&password=wrong_password"
     ```
 
-    ![](./README.assets/TestingCURL.jpg)	
+    ![](.\README.assets\TestingCURL.jpg)	
 
-    ![](./README.assets/GoLogsDuringLogin.jpg.jpg)		
+    ![](.\README.assets\GoLogsDuringLogin.jpg.jpg)		
 
 
 
@@ -214,31 +214,31 @@ http://docs.google.com/presentation/d/11eUHup_X2sBACVZNBFcr6DTY0KV0J3dWST_6N2Aov
 
   Home Page
 
-  ![1543559881953](./README.assets/1543559881953.png)
+  ![1543559881953](.\README.assets\1543559881953.png)
 
   Login
 
-  ![1543559908292](./README.assets/1543559908292.png)
+  ![1543559908292](.\README.assets\1543559908292.png)
 
   Login Success - Show My Card Balance
 
-  ![1543559950618](./README.assets/1543559950618.png)
+  ![1543559950618](.\README.assets\1543559950618.png)
 
   Add Card
 
-  ![1543559651475](./README.assets/1543559651475.png)
+  ![1543559651475](.\README.assets\1543559651475.png)
 
   Product List
 
-  ![1543559693654](./README.assets/1543559693654.png)
+  ![1543559693654](.\README.assets\1543559693654.png)
 
   One Product - click "Pay Now" to pay
 
-  ![1543559744261](./README.assets/1543559744261.png)
+  ![1543559744261](.\README.assets\1543559744261.png)
 
   Paid
 
-  ![1543559794105](./README.assets/1543559794105.png)
+  ![1543559794105](.\README.assets\1543559794105.png)
 
 ## Week #5
 
@@ -431,13 +431,13 @@ https://console.cloud.google.com
 1. Create new project
 2. Go to project 
 
-![GoogleCloudSelectProject](./README.assets/GoogleCloudSelectProj.PNG)   
+![GoogleCloudSelectProject](.\README.assets\GoogleCloudSelectProj.PNG)   
 
 1. Go to Project Settings
 2. Select IAM on left sidebar
 3. Edit permissions of your member ID and give role "Kubernetes Engine Admin"
 
-![GoogleCloudKubeneteAdmin](./README.assets/GoogleCloudKuberneteAdmin.PNG)  
+![GoogleCloudKubeneteAdmin](.\README.assets\GoogleCloudKuberneteAdmin.PNG)  
 
 1. Search the Marketplace for Kong or visit
 
@@ -447,11 +447,11 @@ https://console.cloud.google.com/marketplace/details/kong/kong
 
 1. Press Configure
 
-![GoogleCloudKongPage](./README.assets/GoogleCloudKongPage.PNG) 
+![GoogleCloudKongPage](.\README.assets\GoogleCloudKongPage.PNG) 
 
 1. Deploy in default namespace
 
-![GoogleCloudKongDeploy](./README.assets/GoogleCloudKongDeploy.PNG) 
+![GoogleCloudKongDeploy](.\README.assets\GoogleCloudKongDeploy.PNG) 
 
 ## Configuring Kong
 
@@ -559,7 +559,7 @@ Install the Eclipse plugins
 
 3. Choose "1st Nodeclipse Code" and "Enide Tools Collection"
 
-   ![1543635138425](./README.assets/1543635138425.png)
+   ![1543635138425](.\README.assets\1543635138425.png)
 
 4. Restart Eclipse
 
