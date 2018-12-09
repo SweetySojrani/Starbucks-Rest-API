@@ -31,7 +31,7 @@ On the front-end layer, we use the nodejs.  It also connect to the Google Analyt
 
 In this version, we moved the frontend from Heroku to the Google Kubernetes service. 
 
-![1544325481327](./Project Journal.assets/1544325481327.png)
+![1544325481327](./README.assets/1544325481327.png)
 
 ### Version #1 
 
