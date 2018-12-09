@@ -19,11 +19,13 @@
     - Frontend structure
     - Documentation
   - ![1544328383104](./readme.assets/1544328383104.png)
+  - Create/Process order - Vera
+  - ![1544328889480](./readme.assets/1544328889480.png)
   - Catalog - Lakshmi
   - Payment - Sweety
-  - Create/Process order - Vera
   - Kong Gateway/Kubernetes Service - Kody
   - Frontend: All Members
+  - ![1544328938651](./readme.assets/1544328938651.png)
 - Link to your team's GitHub Repo
   - **Include one of your team member's GitHub Account for transfer (\*)**
   - https://github.com/qinyinghua
