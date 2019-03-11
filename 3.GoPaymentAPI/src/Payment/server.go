@@ -1,23 +1,18 @@
 package main
 
 import (
-   // "unicode"
 	"fmt"
 	"log"
 	"net/http"
-	//"encoding/json"
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
 	"github.com/unrolled/render"
-	//"github.com/satori/go.uuid"
-	//"strconv"
-	//"time"
 	"gopkg.in/mgo.v2"
-    "gopkg.in/mgo.v2/bson"
+        "gopkg.in/mgo.v2/bson"
 )
 
 // MongoDB Config
-var mongodb_server = "52.53.128.22:27017"
+var mongodb_server = "x.x.x.x:27017"
 var mongodb_database = "starbucks"
 var mongodb_collection = "starbucks"
 
