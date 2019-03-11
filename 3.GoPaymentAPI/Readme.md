@@ -3,12 +3,12 @@ GoAPI Payment
 
 
 Steps Performed:
-- Create DataBase for GOAPI in AWS/
-- Create GOAPI in local machine and test the create order and create payment functions
-- After successful run create docker image of the GOAPI and push on docker hub
-- Create a new GOAPI AWS instance and pull the image from Dockerhub
-- Perform a test run in postman this time with the IP address of GOAPI AWS instance instead of localhost
-- Once successfully tested, create the image of the GOAPI instance and create GOAPI2 instance from the image
+- Create DataBase for GoAPI in AWS/
+- Create GoAPI in local machine and test the create order and create payment functions
+- After successful run create docker image of the GoAPI and push on docker hub
+- Create a new GoAPI AWS instance and pull the image from Dockerhub
+- Perform a test run in postman this time with the IP address of GoAPI AWS instance instead of localhost
+- Once successfully tested, create the image of the GoAPI instance and create GoAPI2 instance from the image
 - Create Load Balancer for X-Axis scaling of the Microservice. 
 
 ![load_balancer](https://user-images.githubusercontent.com/42895383/49684429-c278e800-fa88-11e8-85b8-7d77ed765f5f.png)
