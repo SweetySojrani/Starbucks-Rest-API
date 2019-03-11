@@ -3,7 +3,7 @@ Payment GoLang Rest API
 
 
 Steps Performed:
-- Create DataBase for GoAPI in AWS/
+- Create DataBase for GoAPI in AWS
 - Create GoAPI in local machine and test the create order and create payment functions
 - After successful run create docker image of the GoAPI and push on docker hub
 - Create a new GoAPI AWS instance and pull the image from Dockerhub
