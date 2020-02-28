@@ -132,7 +132,7 @@ func starbucksNewOrderHandler(formatter *render.Render) http.HandlerFunc {
 
 		// Open MongoDB Session
 		//info := &mgo.DialInfo{
-        //Addrs:    []string{"52.53.128.22:27017"},
+        //Addrs:    []string{"X.X.X.X:27017"},
         //Database: "starbucks",
         //Username: "admin",
         //Password: "cmpe281",
