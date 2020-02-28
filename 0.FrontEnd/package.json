@@ -21,7 +21,7 @@
     "express": "^4.11.0",
     "glob": "^7.0.0",
     "hbs": "^4.0",
-    "lodash": "^4.3.0",
+    "lodash": "^4.17.13",
     "metalogger": "*",
     "nodebootstrap-htmlapp": "*",
     "nodebootstrap-server": "*",
