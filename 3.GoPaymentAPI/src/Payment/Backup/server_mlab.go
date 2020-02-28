@@ -17,10 +17,10 @@ import (
 )
 
 // MongoDB Config
-var mongodb_server = "admin:cmpe281@ds115664.mlab.com:15664"
+var mongodb_server = "XXX"
 var mongodb_database = "starbucks"
 var mongodb_collection = "starbucks"
-var MongoDBHosts = "ds115664.mlab.com:15664"
+var MongoDBHosts = "XXX"
 var AuthDatabase = "starbucks"
 var AuthUserName = "admin"
 var AuthPassword = "cmpe281"
