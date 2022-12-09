@@ -18,7 +18,7 @@
     "body-parser": "^1.14.1",
     "config": "*",
     "consolidate": "^0.14.0",
-    "express": "^4.11.0",
+    "express": "^4.17.3",
     "glob": "^7.0.0",
     "hbs": "^4.0",
     "lodash": "^4.3.0",
